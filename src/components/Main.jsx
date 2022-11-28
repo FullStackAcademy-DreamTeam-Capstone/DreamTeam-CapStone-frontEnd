@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, Register } from "./";
+import { Navbar, Home } from "./";
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 
 const Main = () => {
@@ -9,19 +9,14 @@ const Main = () => {
   return (
     <div id="main">
       <div id="NavbarDiv">
-        <Navbar error={error} setError={setError} setloggedIn={setLoggedIn} />
+        <Navbar
+          error={error}
+          setError={setError}
+          loggedIn={loggedIn}
+          setloggedIn={setLoggedIn}
+        />
       </div>
       <Routes>
-        <Route
-          path="/register"
-          element={
-            <Register
-              error={error}
-              setError={setError}
-              setLoggedIn={setLoggedIn}
-            />
-          }
-        />
         <Route path="/" element={<Home />} />
       </Routes>
       <div id="mainBody">hello i am main</div>
