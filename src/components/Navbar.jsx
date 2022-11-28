@@ -6,7 +6,7 @@ import {login, register} from "../apiAdapter"
 const Navbar = (props) => {
   const error = props.error
   const setError = props.setError
-  
+  const setLoggedIn = props.setLoggedIn
 
   //REGISTER FUNCTION
   const [registering, setRegistering] = useState(false)
@@ -23,7 +23,7 @@ const Navbar = (props) => {
     const password = registerInfo.password;
     const name = registerInfo.name;
     const location = registerInfo.location;
-    const setLoggedIn = props.setLoggedIn
+    
 
     if (password.length <= 6) {
       setError("Password must be more than 6 characters long.");
@@ -52,7 +52,6 @@ const [loginInfo, setLoginInfo] = useState({
     password:"",
 })
 
-const setLoggedIn = props.setLoggedIn
 
 async function handleSubmitLogin(event) {
     event.preventDefault()
