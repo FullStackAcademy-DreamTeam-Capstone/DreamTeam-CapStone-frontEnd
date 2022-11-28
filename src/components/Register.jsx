@@ -87,6 +87,14 @@ const Register = (props) => {
             required
             />
 
+            <br />
+
+            {error ? <small className="error">{error}</small> : null}
+
+            <button className="submitButton" type="submit">
+            SUBMIT
+            </button>
+
         </form>
         </>
     )
