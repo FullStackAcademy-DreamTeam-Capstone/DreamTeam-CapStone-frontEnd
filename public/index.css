@@ -16,3 +16,7 @@ body {
   align-items: center;
 }
 
+#registerPopup {
+  background-color: black;
+  color: white;
+}
