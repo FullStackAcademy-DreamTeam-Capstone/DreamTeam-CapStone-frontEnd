@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct, Products } from "./";
+import { Navbar, Home, CreateProduct, Profile } from "./";
+import { login } from "../apiAdapter";
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 import { getProducts } from "../apiAdapter";
 
@@ -7,6 +8,7 @@ const Main = () => {
   const [error, setError] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+
   const [getProduct, setGetProduct] = useState([]);
 
   useEffect(() => {
@@ -16,6 +18,7 @@ const Main = () => {
       setGetProduct(productData.products)
     }
     fetchData()
+
   }, []);
 
   return (
@@ -35,6 +38,7 @@ const Main = () => {
         <Route path="/products/create" element={<CreateProduct />} />
         <Route path="/products" element={<Products getProduct={getProduct}/>} />
       </Routes>
+
     </div>
   );
 };
