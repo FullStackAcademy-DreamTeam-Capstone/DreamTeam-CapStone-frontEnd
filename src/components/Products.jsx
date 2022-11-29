@@ -1,8 +1,13 @@
 import React from 'react' 
-
+import {getProducts} from '../apiAdapter'
 const Products = () => {
+
+    async function handleOnload() {
+        getProducts()
+    }
+
 return (
-    <div>Hello world</div>
+    <div onLoad={handleOnload}>Hello</div>
 )
 }
 

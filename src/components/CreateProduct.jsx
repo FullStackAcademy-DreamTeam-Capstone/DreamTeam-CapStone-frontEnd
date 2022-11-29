@@ -11,6 +11,7 @@ const [ img,  setImg] = useState('')
         event.preventDefault()
         console.log(name, price, img)
         const product = await createProduct(name, price, img);
+        console.log(product, 'this is the product')
         return product
     }
 
