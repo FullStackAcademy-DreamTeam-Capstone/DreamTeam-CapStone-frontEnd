@@ -51,7 +51,7 @@ export async function createProduct(name, price, img_url) {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         name,
@@ -82,4 +82,50 @@ export async function getProducts() {
     console.error(error);
     return alert("Error loading all the products");
   }
+}
+
+
+//Deleting a product
+export async function deleteProduct(productId) {
+ try {
+    const options = {
+        method: "DELETE",
+        header: {
+            'Content-type':"application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+    }
+    const response = await fetch(`${BASE_URL}/api/products/productId`, options)
+    const data = await response.json();
+    
+ } catch (error) {
+    console.error(error) 
+    return (
+        alert("There was an error deleting your product")
+    )
+ }
+}
+
+export async function updateProduct(name, price, img_url, id) {
+    try {
+        const options = {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`,
+            },
+            body: JSON.stringify({
+              name,
+              price,
+              img_url,
+            }),
+          };
+
+          const response = await fetch(`${BASE_URL}/api/products/${id}`, options)
+    } catch (error) {
+        console.error(error) 
+        return (
+            alert("there was an error trying to edit yor product")
+        )
+    }
 }
