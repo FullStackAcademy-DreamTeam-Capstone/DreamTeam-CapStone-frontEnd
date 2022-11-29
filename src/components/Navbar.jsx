@@ -58,7 +58,7 @@ async function handleSubmitLogin(event) {
     const username = loginInfo.username
     const password = loginInfo.password
     const response = await login(username, password)
-
+  console.log(response, "RESPONSE")
     localStorage.removeItem("token")
     if (response && response.token) {
         localStorage.setItem("token", response.token)
@@ -80,7 +80,7 @@ async function handleSubmitLogin(event) {
   return (
     <div id="navbar">
       <h2>Amazon Lite</h2>
-
+      <div id="navbtns">
       <Popup trigger={<button> Register </button>}>
         <div id="registerPopup">
           <form onSubmit={handleSubmitRegister}>
@@ -183,6 +183,7 @@ async function handleSubmitLogin(event) {
         </div>
       </Popup>
         <NavLink to="profile"><button>Profile</button></NavLink>
+      </div>
     </div>
   );
 };
