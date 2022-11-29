@@ -13,7 +13,7 @@ const Main = () => {
           error={error}
           setError={setError}
           loggedIn={loggedIn}
-          setloggedIn={setLoggedIn}
+          setLoggedIn={setLoggedIn}
         />
       </div>
       <div id="mainBody">
