@@ -5,6 +5,7 @@ import { createBrowserRouter, Routes, Route } from "react-router-dom";
 const Main = () => {
   const [error, setError] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   return (
     <div id="main">
@@ -14,6 +15,8 @@ const Main = () => {
           setError={setError}
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
         />
       </div>
       <Routes>
