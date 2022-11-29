@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Home, CreateProduct, Profile, Products } from "./";
 import { login, getProducts } from "../apiAdapter";
+
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 
 const Main = () => {
