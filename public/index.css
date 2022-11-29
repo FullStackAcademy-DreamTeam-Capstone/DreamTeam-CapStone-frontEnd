@@ -6,8 +6,6 @@ body {
 }
 
 
-
-
 /*NAVBAR CSS */
 #navbar {
   font-family: 'Poller One', Arial, sans-serif;
@@ -18,6 +16,7 @@ body {
   color: white;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 #registerPopup {
@@ -25,6 +24,10 @@ body {
   color: white;
 }
 
+#navbtns {
+  margin: 10px;
+  padding: 10px;
+}
 
 
 
@@ -38,11 +41,42 @@ body {
 #holidayImages {
   display: flex;
   flex-direction: row;
-  width: 200px;
+  flex-wrap: wrap;
   height: 200px;
-  padding: 15px;
+  justify-content: space-evenly;
+
 }
 
 #homeHeader {
-  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#row {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.rowText {
+  margin-bottom: 20px;
+}
+
+
+/*HOME-FOOTER PAGE CSS */
+.homeFooterContainer {
+  background-color: #222222;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
+.footerColumns {
+  display: flex;
+  flex-direction: row;
+}
+
+.footerRows {
+  display: inline;
 }

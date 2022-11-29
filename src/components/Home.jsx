@@ -1,4 +1,5 @@
 import React from "react";
+import { HomeFooter } from "./"
 
 const Home = () => {
 
@@ -13,15 +14,20 @@ const Home = () => {
     ]
 
     return (
+
         <div id="Home">
-            <div id="homeHeader"> Shop for any occasion and for any environment with Amazon Lite (name still pending) </div>
+
+            <div id="homeHeader"> Shop for any occasion with Amazon Lite (name still pending) </div>
             <div id="homeImage">
                 <img
                 src={homeImage}
                 alt="images"
                 />
                 </div>
-            <div id="row"> Shop for the holidays! </div>
+            <div id="row"> 
+            <div className="rowText">
+                Buy presents for the holidays!
+                </div>
             <div id="holidayImages"> {holidayImages.map((image, i) => (
                 <img
                 id="holidayImages"
@@ -30,6 +36,10 @@ const Home = () => {
                 alt="images"
                 />))}
                 </div>
+                </div>
+                
+                <HomeFooter />
+                
         </div>
 
     )
