@@ -99,7 +99,18 @@ const Navbar = (props) => {
 
   return (
     <div id="navbar">
-      <h2>Amazon Lite</h2>
+      <h2>Amazon Lite</h2> 
+      
+      
+      <>
+          {loggedIn ? (
+            <h2> Welcome {currentUser.username}! </h2>
+          ) : (
+            <h2> Please log in or make an account with us to get started! </h2>
+          )}
+        </>
+
+
       <div id="navbtns">
         <Popup trigger={<button> Register </button>}>
           <div id="registerPopup">
@@ -209,13 +220,7 @@ const Navbar = (props) => {
           LOGOUT
         </button>
 
-        <>
-          {loggedIn ? (
-            <h2> Welcome {currentUser.username}! </h2>
-          ) : (
-            <h2> Please log in or make an account with us to get started! </h2>
-          )}
-        </>
+       
       </div>
     </div>
   );
