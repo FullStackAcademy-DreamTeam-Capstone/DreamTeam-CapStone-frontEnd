@@ -1,33 +1,44 @@
-import React from "react";
+import {React, useState} from "react";
 import {createProduct} from "../apiAdapter"
 
 const CreateProduct = () => {
+const [ name,  setName] = useState('')
+const [ price,  setPrice] = useState('')
+const [ img,  setImg] = useState('')
+
 
     async function handleSubmit(event) {
         event.preventDefault()
-        const name = event.target[0].value;
-        const price = event.target[1].value;
-        const img_url = event.target[2].value;
-        const product = await createProduct(name, price, img_url);
-        localStorage.removeItem("token");
-        localStorage.setItem("token", token)
+        console.log(name, price, img)
+        const product = await createProduct(name, price, img);
         return product
     }
+
+    async function handleChangeName(e) {
+        setName(e.target.value)
+    }
+    async function handleChangePrice(e) {
+        setPrice(e.target.value)
+    }
+    async function handleChangeImg(e) {
+        setImg(e.target.value)
+    }
+
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <h3>Create a product</h3>
                 <label htmlFor="productName"> Name: </label>
-                <input id="productName" type="text" required/>
+                <input id="productName" type="text" onChange={handleChangeName} required/>
                 <label htmlFor="productPrice"> Price: </label>
-                <input id="productPrice" type="text" required/>
-                <label htmlFor="productImg"> img: </label>
-                <input id="productImg" type="img_url" />
+                <input id="productPrice" type="text" onChange={handleChangePrice} required/>
+                <label htmlFor="productImg"> img_url: </label>
+                <input id="productImg" type="img_url" onChange={handleChangeImg} />
                 <button type="submit">Create Product</button>
             </form>
         </div>
     )
-
 
 }
 
