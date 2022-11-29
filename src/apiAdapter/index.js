@@ -1,45 +1,153 @@
-const BASE_URL = "http://localhost:8080"
+const BASE_URL = "http://localhost:8080";
 
 //Register
 export async function register(username, password, name, location) {
-    try {
-        const options = {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-                username,
-                password,
-                name,
-                location
-            }),
-        }
-        const response = await fetch (`${BASE_URL}/api/users/register`, options)
-        const result = await response.json()
-        return result
-    } catch (error) {
-        console.error(error)
-    }
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+        name,
+        location,
+      }),
+    };
+    const response = await fetch(`${BASE_URL}/api/users/register`, options);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 //Login
 export async function login(username, password) {
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    };
+    const response = await fetch(`${BASE_URL}/api/users/login`, options);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+//Create a product
+export async function createProduct(name, price, img_url) {
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        name,
+        price,
+        img_url
+      }),
+    };
+    console.log(options, 'this is options')
+
+    const response = await fetch(`${BASE_URL}/api/products`, options);
+    console.log(response, "this is the response")
+    const result = await response.json();
+    console.log(result, "this is the result")
+
+
+    return result;
+  } catch (error) {
+    console.error(error);
+    return alert("You are not able to make a product");
+  }
+}
+
+
+//Fetching all the products 
+export async function getProducts() {
+  try {
+    const response = await fetch(`${BASE_URL}/api/products/`);
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    console.error(error);
+    return alert("Error loading all the products");
+  }
+}
+
+
+//Deleting a product
+export async function deleteProduct(productId) {
+ try {
+    const options = {
+        method: "DELETE",
+        header: {
+            'Content-type':"application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        }
+    }
+    const response = await fetch(`${BASE_URL}/api/products/productId`, options)
+    const data = await response.json();
+    
+ } catch (error) {
+    console.error(error) 
+    return (
+        alert("There was an error deleting your product")
+    )
+ }
+}
+
+//Updating a Product
+export async function updateProduct(name, price, img_url, id) {
     try {
         const options = {
-            method: "POST",
+            method: "PATCH",
             headers: {
-                "Content-type": "application/json",
+              "content-type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`,
             },
             body: JSON.stringify({
-                username,
-                password,
+              name,
+              price,
+              img_url,
             }),
-        }
-        const response = await fetch (`${BASE_URL}/api/users/login`, options)
-        const result = await response.json()
-        return result
+          };
+
+          const response = await fetch(`${BASE_URL}/api/products/${id}`, options)
     } catch (error) {
-        console.error(error)
+        console.error(error) 
+        return (
+            alert("there was an error trying to edit yor product")
+        )
     }
+}
+
+//Getting User information
+export async function userInfo() {
+  try {
+    const options = {
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      },
+    };
+    const response = await fetch(`${BASE_URL}/api/users/me`, options);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error)
+  }
 }
