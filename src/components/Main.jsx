@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct } from "./";
+import { Navbar, Home, CreateProduct, Profile } from "./";
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 
 const Main = () => {
@@ -16,11 +16,14 @@ const Main = () => {
           setloggedIn={setLoggedIn}
         />
       </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <CreateProduct />
-      <div id="mainBody">hello i am main</div>
+      <div id="mainBody">
+        hello i am main
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+        {/* <CreateProduct /> */}
+      </div>
     </div>
   );
 };

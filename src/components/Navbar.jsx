@@ -182,7 +182,7 @@ async function handleSubmitLogin(event) {
           </form>
         </div>
       </Popup>
-
+        <NavLink to="profile"><button>Profile</button></NavLink>
     </div>
   );
 };
