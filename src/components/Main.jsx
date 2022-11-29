@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct, Profile } from "./";
+import { Navbar, Home, CreateProduct, Profile, Products } from "./";
 import { login } from "../apiAdapter";
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 import { getProducts } from "../apiAdapter";
