@@ -56,12 +56,16 @@ export async function createProduct(name, price, img_url) {
       body: JSON.stringify({
         name,
         price,
-        img_url,
+        img_url
       }),
     };
+    console.log(options, 'this is options')
 
-    const response = await fetch(`${BASE_URL}/api/products/`, options);
+    const response = await fetch(`${BASE_URL}/api/products`, options);
+    console.log(response, "this is the response")
     const result = await response.json();
+    console.log(result, "this is the result")
+
 
     return result;
   } catch (error) {
