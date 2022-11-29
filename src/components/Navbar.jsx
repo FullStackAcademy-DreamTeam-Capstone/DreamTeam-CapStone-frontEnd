@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Popup from "reactjs-popup";
-import {login, register} from "../apiAdapter"
+import { login, register, userInfo } from "../apiAdapter"
 
 const Navbar = (props) => {
   const error = props.error
   const setError = props.setError
   const setLoggedIn = props.setLoggedIn
+  const currentUser = props.currentUser
+  const setCurrentUser = props.setCurrentUser
+  const loggedIn = props.loggedIn
+
+  const navigate = useNavigate()
 
   //REGISTER FUNCTION
   const [registering, setRegistering] = useState(false)
@@ -43,9 +48,8 @@ const Navbar = (props) => {
     }
   }
 
-//LOGIN FUNCTION
-const loggedIn = props.loggedIn
 
+//LOGIN FUNCTION
 const [loggingIn, setLoggingIn] = useState(false)
 const [loginInfo, setLoginInfo] = useState({
     username:"",
@@ -75,6 +79,29 @@ async function handleSubmitLogin(event) {
         password: "",
     })
 }
+
+
+//LOGOUT FUNCTION
+async function logout() {
+  localStorage.removeItem("token");
+  setLoggedIn(false);
+  navigate("/");
+}
+
+//GET USER INFO FUNCTION
+useEffect(() => {
+  const userLogIn = localStorage.getItem("token");
+  if (userLogIn) {
+    setLoggedIn(userLogIn);
+
+    const fetchData = async () => {
+      const data = await userInfo();
+      setCurrentUser(data);
+    };
+    fetchData();
+  }
+}, [loggedIn]);
+
 
 
   return (
@@ -182,6 +209,14 @@ async function handleSubmitLogin(event) {
           </form>
         </div>
       </Popup>
+
+      <button id="logOutButton" onClick={logout}>
+              LOGOUT
+            </button>
+
+      <>
+      {loggedIn ? <h2> Welcome {currentUser.username}! </h2> : <h2> Please log in or make an account with us to get started! </h2>}
+      </>
 
     </div>
   );
