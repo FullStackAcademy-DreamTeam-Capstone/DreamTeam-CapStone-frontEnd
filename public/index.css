@@ -5,6 +5,10 @@ body {
   margin: 0;
 }
 
+
+
+
+/*NAVBAR CSS */
 #navbar {
   font-family: 'Poller One', Arial, sans-serif;
   flex-grow: 1;
@@ -19,4 +23,26 @@ body {
 #registerPopup {
   background-color: black;
   color: white;
+}
+
+
+
+
+/*HOME PAGE CSS */
+#homeImage {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#holidayImages {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  height: 200px;
+  padding: 15px;
+}
+
+#homeHeader {
+  text-align: center;
 }
