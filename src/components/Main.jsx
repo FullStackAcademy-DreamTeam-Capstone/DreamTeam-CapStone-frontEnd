@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Home, CreateProduct, Products } from "./";
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
+import { getProducts } from "../apiAdapter";
 
 const Main = () => {
   const [error, setError] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [getProduct, setGetProduct] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const productData = await getProducts();
+      console.log(productData.products, 'this is data')
+      setGetProduct(productData.products)
+    }
+    fetchData()
+  }, []);
 
   return (
     <div id="main">
@@ -22,9 +33,8 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products/create" element={<CreateProduct />} />
+        <Route path="/products" element={<Products getProduct={getProduct}/>} />
       </Routes>
-      <Products />    
-      <div id="mainBody">hello i am main</div>
     </div>
   );
 };
