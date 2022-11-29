@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Home, CreateProduct, Profile } from "./";
-import { login } from "../apiAdapter"
+import { login } from "../apiAdapter";
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 
 const Main = () => {
@@ -8,22 +8,22 @@ const Main = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [users, setUsers] = useState([]);
-  const [userName, setUserName] = useState("")
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    async function fetchProfile () {
+    async function fetchProfile() {
       const allProfile = await login(userName);
-      setUsers(allProfile)
+      setUsers(allProfile);
     }
     if (userName) {
-      fetchProfile()
+      fetchProfile();
     }
-  })
+  });
 
   const getLoggedInUser = async () => {
     const token = localStorage.getItem("token");
     if (token) {
-      setLoggedIn(true)
+      setLoggedIn(true);
     }
     const user = localStorage.getItem("userName");
     if (user) {
@@ -54,7 +54,17 @@ const Main = () => {
         hello i am main
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile users={users} loggedIn={loggedIn}/>} />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                users={users}
+                loggedIn={loggedIn}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
         </Routes>
         {/* <CreateProduct /> */}
       </div>
