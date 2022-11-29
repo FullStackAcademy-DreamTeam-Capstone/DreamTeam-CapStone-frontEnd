@@ -106,6 +106,7 @@ export async function deleteProduct(productId) {
  }
 }
 
+//Updating a Product
 export async function updateProduct(name, price, img_url, id) {
     try {
         const options = {
@@ -128,4 +129,21 @@ export async function updateProduct(name, price, img_url, id) {
             alert("there was an error trying to edit yor product")
         )
     }
+}
+
+//Getting User information
+export async function userInfo() {
+  try {
+    const options = {
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      },
+    };
+    const response = await fetch(`${BASE_URL}/api/users/me`, options);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error)
+  }
 }
