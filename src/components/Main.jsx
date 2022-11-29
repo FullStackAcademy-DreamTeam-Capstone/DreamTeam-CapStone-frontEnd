@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct } from "./";
+import { Navbar, Home, CreateProduct, Products } from "./";
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 
 const Main = () => {
@@ -21,8 +21,9 @@ const Main = () => {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/products/create" element={<CreateProduct />} />
       </Routes>
-      <CreateProduct />
+      <Products />    
       <div id="mainBody">hello i am main</div>
     </div>
   );
