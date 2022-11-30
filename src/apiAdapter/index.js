@@ -81,6 +81,8 @@ export async function getProducts() {
     const response = await fetch(`${BASE_URL}/api/products/`);
     const result = await response.json();
 
+    console.log(result, 'line83 api')
+
     return result;
   } catch (error) {
     console.error(error);
@@ -150,4 +152,22 @@ export async function userInfo() {
   } catch (error) {
     console.error(error)
   }
+}
+
+// update Profile
+export async function userUpdate(username, password, id){
+    const options={
+      method:"PATCH",
+      headers:{
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify({
+        username, 
+        password
+      }),
+    };
+    const response = await fetch(`${BASE_URL}/api/users/${id}`, options);
+    const result = await response.json();
+    return result;
 }

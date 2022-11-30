@@ -43,8 +43,8 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       const productData = await getProducts();
-      console.log(productData.products, "this is data");
-      setGetProduct(productData.products);
+      console.log(productData.allActiveProducts, "this is data");
+      setGetProduct(productData.allActiveProducts);
     };
     fetchData();
   }, []);
@@ -68,6 +68,7 @@ const Main = () => {
           element={
             <Profile
               users={users}
+              setUsers={setUsers}
               loggedIn={loggedIn}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
