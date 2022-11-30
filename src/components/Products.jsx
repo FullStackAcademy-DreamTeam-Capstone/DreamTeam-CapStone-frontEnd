@@ -12,7 +12,7 @@ const Products = (props) => {
             <div id="products" key={`product-${product.id}`}>
               <div id="singleProduct">
                 <div>{product.name}</div>
-                <div>{product.price}</div>
+                <div>${product.price}</div>
                 <div>{product.img_url}</div>
               </div>
             </div>
