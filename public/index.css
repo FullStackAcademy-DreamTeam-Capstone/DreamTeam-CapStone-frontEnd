@@ -5,6 +5,8 @@ body {
   margin: 0;
 }
 
+
+/*NAVBAR CSS */
 #navbar {
   font-family: 'Poller One', Arial, sans-serif;
   flex-grow: 1;
@@ -22,24 +24,66 @@ body {
   color: white;
 }
 
-#product {
-  display: flex;
-
+#navbtns {
+  margin: 10px;
+  padding: 10px;
 }
 
-#productList {
+
+
+/*HOME PAGE CSS */
+#homeImage {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#holidayImages {
   display: flex;
-  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 200px;
+  justify-content: space-evenly;
+
 }
 
-#singleProduct{
+#homeHeader {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#row {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.rowText {
+  margin-bottom: 20px;
+}
+
+
+/*HOME-FOOTER PAGE CSS */
+.homeFooterContainer {
+  background-color: #222222;
+  color: white;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  min-width: 100px;
-  min-height: 100px;
-  border: 1px solid black;
+  
+}
+.footerColumns {
+  display: flex;
+  flex-direction: row;
+}
 
+.footerRows {
+  display: inline;
+}
 
+#footerRow{
+display: flex;
+align-items: center;
 }
