@@ -68,6 +68,7 @@ const Main = () => {
           element={
             <Profile
               users={users}
+              setUsers={setUsers}
               loggedIn={loggedIn}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
