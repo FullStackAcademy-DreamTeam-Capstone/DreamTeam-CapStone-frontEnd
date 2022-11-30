@@ -81,6 +81,8 @@ export async function getProducts() {
     const response = await fetch(`${BASE_URL}/api/products/`);
     const result = await response.json();
 
+    console.log(result, 'line83 api')
+
     return result;
   } catch (error) {
     console.error(error);

@@ -1,5 +1,6 @@
 import React from "react";
 import { HomeFooter } from "./";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const homeImage = [
@@ -15,20 +16,31 @@ const Home = () => {
   return (
     <div id="Home">
       <div id="homeHeader">
-        {" "}
-        Shop for any occasion with Amazon Lite (name still pending){" "}
+        
+        Shop for any occasion with Amazon Lite (name still pending)
       </div>
+
+      
       <div id="homeImage">
+        <NavLink to="products">
         <img src={homeImage} alt="images" />
+      </NavLink>
       </div>
+      
       <div id="row">
         <div className="rowText">Buy presents for the holidays!</div>
+        
+
+        <NavLink to="products">
         <div id="holidayImages">
-          {" "}
+          
           {holidayImages.map((image, i) => (
             <img id="holidayImages" key={i} src={image} alt="images" />
           ))}
         </div>
+        </NavLink>
+
+
       </div>
 
       <HomeFooter />

@@ -16,6 +16,7 @@ const Products = (props) => {
                   <div>{product.price}</div>
                   <div>{product.img_url}</div>
                 </div>
+
               </div>
             );
           })
