@@ -40,6 +40,12 @@ const Navbar = (props) => {
         setLoggedIn(response.token);
         setRegistering(false);
         setError(null);
+        setRegisterinfo({
+          username: "",
+          password: "",
+          name: "",
+          location: "",
+        });
       } else {
         setLoggedIn(false);
         setError("User already exists");
@@ -59,7 +65,6 @@ const Navbar = (props) => {
     const username = loginInfo.username;
     const password = loginInfo.password;
     const response = await login(username, password);
-    console.log(response, "RESPONSE");
     localStorage.removeItem("token");
     if (response && response.token) {
       localStorage.setItem("token", response.token);
@@ -99,9 +104,23 @@ const Navbar = (props) => {
 
   return (
     <div id="navbar">
-      <h2>Amazon Lite</h2> 
-      
-      
+      <div className="navbarLeftLinks">
+      <h2>Amazon Lite</h2>
+
+      <NavLink to="/">
+          <button>Home</button>
+        </NavLink>
+
+      <NavLink to="products">
+          <button>Products</button>
+        </NavLink>
+        
+      <NavLink to="/">
+          <button>Cart</button>
+      </NavLink>
+
+      </div>
+    
       <>
           {loggedIn ? (
             <h2> Welcome {currentUser.username}! </h2>
@@ -177,6 +196,7 @@ const Navbar = (props) => {
           </div>
         </Popup>
 
+
         <Popup trigger={<button> Login </button>}>
           <div id="loginPopup">
             <form onSubmit={handleSubmitLogin}>
@@ -213,9 +233,13 @@ const Navbar = (props) => {
             </form>
           </div>
         </Popup>
+
+
         <NavLink to="profile">
           <button>Profile</button>
         </NavLink>
+
+
         <button id="logOutButton" onClick={logout}>
           LOGOUT
         </button>
