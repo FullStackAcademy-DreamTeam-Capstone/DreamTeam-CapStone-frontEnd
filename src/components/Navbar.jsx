@@ -20,6 +20,7 @@ const Navbar = (props) => {
     password: "",
     name: "",
     location: "",
+    email: "",
   });
 
   async function handleSubmitRegister(event) {
@@ -28,11 +29,12 @@ const Navbar = (props) => {
     const password = registerInfo.password;
     const name = registerInfo.name;
     const location = registerInfo.location;
+    const email = registerInfo.email
 
     if (password.length <= 6) {
       setError("Password must be more than 6 characters long.");
     } else {
-      const response = await register(username, password, name, location);
+      const response = await register(username, password, name, location, email);
       localStorage.removeItem("token");
 
       if (response && response.token) {
@@ -45,6 +47,7 @@ const Navbar = (props) => {
           password: "",
           name: "",
           location: "",
+          email: "",
         });
       } else {
         setLoggedIn(false);
@@ -186,6 +189,19 @@ const Navbar = (props) => {
               />
 
               <br />
+
+              <label htmlFor="email5"> email: </label>
+              <input
+                id="email5"
+                type="text"
+                onChange={(e) =>
+                  setRegisterinfo({ ...registerInfo, email: e.target.value })
+                }
+                value={registerInfo.email}
+                required
+              />
+
+              <br/>
 
               {error ? <small className="error">{error}</small> : null}
 
