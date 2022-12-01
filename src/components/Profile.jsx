@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useResolvedPath } from "react-router-dom";
 import { userInfo, userUpdate } from "../apiAdapter";
 
 const Profile = (props) => {
@@ -8,15 +7,17 @@ const Profile = (props) => {
   const currentUser = props.currentUser;
   const users = props.users
   const setUsers = props.setUsers;
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [update, setUpdate] = useState(false);
 
   async function handleSubmit(e) {
     try {
       const updateProfile = await userUpdate(
-        username,
+        name,
         password,
+        email,
         currentUser.id
       );
       console.log(updateProfile, "THIS IS UPDATEPROFILE")
@@ -43,6 +44,7 @@ const Profile = (props) => {
             <div>{currentUser.name}</div>
             <div>{currentUser.username}</div>
             <div>{currentUser.location}</div>
+            <div>{currentUser.email}</div>
           </>
         ) : (
           <>
@@ -75,9 +77,9 @@ const Profile = (props) => {
             <input
               placeholder="username"
               type="text"
-              value={username}
+              value={name}
               onChange={(e) => {
-                setUsername(e.target.value);
+                setName(e.target.value);
               }}
             ></input>
             <input
@@ -88,6 +90,14 @@ const Profile = (props) => {
                 setPassword(e.target.value)
               }}
               required
+            ></input>
+            <input
+              placeholder="email"
+              type="text"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+              }}
             ></input>
             <button onSubmit={handleSubmit} type="submit">
               Submit
