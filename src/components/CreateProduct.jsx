@@ -32,7 +32,7 @@ const [ img,  setImg] = useState('')
                 <h3>Create a product</h3>
                 <label htmlFor="productName"> Name: </label>
                 <input id="productName" type="text" onChange={handleChangeName} required/>
-                <label htmlFor="productPrice"> Price: </label>
+                <label htmlFor="productPrice"> Price ($): </label>
                 <input id="productPrice" type="text" onChange={handleChangePrice} required/>
                 <label htmlFor="productImg"> img_url: </label>
                 <input id="productImg" type="img_url" onChange={handleChangeImg} />

@@ -112,6 +112,7 @@ export async function deleteProduct(productId) {
  }
 }
 
+
 //Updating a Product
 export async function updateProduct(name, price, img_url, id) {
     try {
@@ -137,6 +138,7 @@ export async function updateProduct(name, price, img_url, id) {
     }
 }
 
+
 //Getting User information
 export async function userInfo() {
   try {
@@ -154,8 +156,9 @@ export async function userInfo() {
   }
 }
 
+
 // update Profile
-export async function userUpdate(username, password, id){
+export async function userUpdate(name, password, email, id){
     const options={
       method:"PATCH",
       headers:{
@@ -163,11 +166,15 @@ export async function userUpdate(username, password, id){
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify({
-        username, 
-        password
+        name, 
+        password,
+        email
       }),
     };
     const response = await fetch(`${BASE_URL}/api/users/${id}`, options);
     const result = await response.json();
     return result;
 }
+
+
+
