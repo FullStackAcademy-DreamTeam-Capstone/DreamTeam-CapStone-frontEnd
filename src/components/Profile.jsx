@@ -75,7 +75,7 @@ const Profile = (props) => {
             }}
           >
             <input
-              placeholder="username"
+              placeholder="name"
               type="text"
               value={name}
               onChange={(e) => {
