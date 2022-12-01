@@ -1,7 +1,7 @@
 const BASE_URL = "http://localhost:8080";
 
 //Register
-export async function register(username, password, name, location) {
+export async function register(username, password, name, location, email) {
   try {
     const options = {
       method: "POST",
@@ -13,6 +13,7 @@ export async function register(username, password, name, location) {
         password,
         name,
         location,
+        email
       }),
     };
     const response = await fetch(`${BASE_URL}/api/users/register`, options);
