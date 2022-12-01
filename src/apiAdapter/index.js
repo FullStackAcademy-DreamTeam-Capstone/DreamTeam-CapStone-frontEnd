@@ -158,7 +158,7 @@ export async function userInfo() {
 
 
 // update Profile
-export async function userUpdate(username, password, id){
+export async function userUpdate(name, password, email, id){
     const options={
       method:"PATCH",
       headers:{
@@ -166,8 +166,9 @@ export async function userUpdate(username, password, id){
         "Authorization": `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify({
-        username, 
-        password
+        name, 
+        password,
+        email
       }),
     };
     const response = await fetch(`${BASE_URL}/api/users/${id}`, options);
