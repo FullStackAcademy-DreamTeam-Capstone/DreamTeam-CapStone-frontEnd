@@ -112,6 +112,7 @@ export async function deleteProduct(productId) {
  }
 }
 
+
 //Updating a Product
 export async function updateProduct(name, price, img_url, id) {
     try {
@@ -137,6 +138,7 @@ export async function updateProduct(name, price, img_url, id) {
     }
 }
 
+
 //Getting User information
 export async function userInfo() {
   try {
@@ -153,6 +155,7 @@ export async function userInfo() {
     console.error(error)
   }
 }
+
 
 // update Profile
 export async function userUpdate(username, password, id){
@@ -171,3 +174,6 @@ export async function userUpdate(username, password, id){
     const result = await response.json();
     return result;
 }
+
+
+
