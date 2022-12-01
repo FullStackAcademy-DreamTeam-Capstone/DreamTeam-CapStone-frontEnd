@@ -115,7 +115,7 @@ const Navbar = (props) => {
           <button>Products</button>
         </NavLink>
         
-      <NavLink to="/">
+      <NavLink to="/cart">
           <button>Cart</button>
       </NavLink>
 

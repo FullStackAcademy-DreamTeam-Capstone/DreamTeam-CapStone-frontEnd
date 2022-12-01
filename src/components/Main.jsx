@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct, Profile, Products } from "./";
+import { Navbar, Home, CreateProduct, Profile, Products, Cart } from "./";
 import { login, getProducts } from "../apiAdapter";
 
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
@@ -79,6 +79,10 @@ const Main = () => {
         <Route
           path="/products"
           element={<Products getProduct={getProduct} />}
+        />
+        <Route
+        path="/cart"
+        element={<Cart />}
         />
       </Routes>
     </div>

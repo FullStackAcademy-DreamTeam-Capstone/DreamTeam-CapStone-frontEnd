@@ -13,7 +13,7 @@ const Products = (props) => {
               <div id="products" key={`product-${product.id}`}>
                 <div id="singleProduct">
                   <div>{product.name}</div>
-                  <div>{product.price}</div>
+                  <div>$ {product.price}</div>
                   <div>{product.img_url}</div>
                 </div>
 
@@ -24,7 +24,7 @@ const Products = (props) => {
           <div>Loading Products..</div>
         )}
       </div>
-      <NavLink to="/products/create"><button>Create Products</button></NavLink>
+      <NavLink to="/products/create"><button>Add a Product</button></NavLink>
     </div>
   );
 };
