@@ -50,7 +50,7 @@ const Products = (props) => {
                     </button>
                   </div>
                 </div>
-              </div>
+              
             );
           })
         ) : (
