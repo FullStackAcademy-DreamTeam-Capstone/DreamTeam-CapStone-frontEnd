@@ -104,11 +104,12 @@ const Main = () => {
           path="/products"
           element={<Products getProduct={getProduct}/>}
         />
-        <Route path="/create_item/create" element = {<AddToCart 
+        <Route path="/cart_item/create" element = {<AddToCart 
         cart={cart} 
         setCart={setCart}
         cartItems={cartItems}
-        setCartItems={setCartItems} />} />
+        setCartItems={setCartItems}
+        getProduct={getProduct} />} />
         <Route
         path="/cart"
         element={<Cart />}
