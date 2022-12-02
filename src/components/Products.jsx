@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { createCartItem } from "../apiAdapter";
 
 const Products = (props) => {
   const products = props.getProduct;
   const createCartItems = props.cartItems;
   const cart = props.cart;
 
-  async function handleAddToCart(event) {
+  //ADD TO CART FUNCTION
+  const [cartInfo, setCartInfo] = useState({
+    price:"",
+    quantity: 1,
+  })
+
+  async function handleSubmitAddItemToCart(event) {
     event.preventDefault();
-    createCartItems(products.id, cart.id, products.price, +1);
+    const price = products.price
+    const quantity = cartInfo.quantity
+
+    const response = await createCartItem(price, quantity)
+
   }
+
+
 
   return (
     <div>
@@ -25,7 +38,7 @@ const Products = (props) => {
                   <div> 
                     <button id="editProduct"> Edit Product </button>
                     <button id="deleteProduct"> Delete Product </button> 
-                    <NavLink to ='/cart_item/create'><button> Add to Cart </button></NavLink>
+                    <button onClick={handleSubmitAddItemToCart}> Add to Cart </button>
                     </div>
                 </div>
 
