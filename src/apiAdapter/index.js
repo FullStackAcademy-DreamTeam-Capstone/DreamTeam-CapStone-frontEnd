@@ -158,7 +158,7 @@ export async function userInfo() {
 
 
 // update Profile
-export async function userUpdate(name, password, email, id){
+export async function userUpdate(name, password, email, id, isadmin){
     const options={
       method:"PATCH",
       headers:{
@@ -168,7 +168,8 @@ export async function userUpdate(name, password, email, id){
       body: JSON.stringify({
         name, 
         password,
-        email
+        email,
+        isadmin
       }),
     };
     const response = await fetch(`${BASE_URL}/api/users/${id}`, options);
@@ -180,12 +181,11 @@ export async function userUpdate(name, password, email, id){
 export async function getCartItems(){
   const response = await fetch(`${BASE_URL}/api/cart`);
   const result = await response.json();
-  console.log(result, 'plsssss help')
   return result;
 }
 
 //create cart item
-export async function createCartItem(){
+export async function createCartItem(price, quantity){
   try {
     const options = {
       method: "POST",
@@ -199,10 +199,10 @@ export async function createCartItem(){
       }),
     };
 
-    const response = await fetch(`${BASE_URL}/api/cart_item`, options);
-    console.log("line 203 api", response)
+    const response = await fetch(`${BASE_URL}/api/cart_items`, options);
     const result = await response.json();
     return result;
+    console.log(result, 'line203 api')
   } catch (error) {
     console.log(error)
   }

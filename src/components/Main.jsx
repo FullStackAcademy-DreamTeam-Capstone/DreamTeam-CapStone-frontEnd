@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails, AddToCart } from "./";
-import { login, getProducts, getCart } from "../apiAdapter";
+
+import { login, getProducts, getCartItems, createCartItem, getCart } from "../apiAdapter";
+
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 
 const Main = () => {
@@ -101,19 +103,28 @@ const Main = () => {
         <Route path="/products/create" element={<CreateProduct />} />
         <Route
           path="/products"
-          element={<Products getProduct={getProduct}/>}
+          element={<Products getProduct={getProduct} currentUser={currentUser}/>}
         />
+        
         <Route path="/products/details/:productId" element={<SeeDetails getProduct={getProduct}/>} />
 
-        <Route path="/create_item/create" element = {<AddToCart 
+
+        <Route path="/cart_item/create" element = {<AddToCart 
         cart={cart} 
         setCart={setCart}
         cartItems={cartItems}
-        setCartItems={setCartItems} />} />
+        setCartItems={setCartItems}
+        getProduct={getProduct} />} />
+
+
+        <Route path="/products/create" element={<SeeDetails/>} />
+
+       
+
 
         <Route
         path="/cart"
-        element={<Cart />}
+        element={<Cart getProduct={getProduct}/>}
         />
       </Routes>
     </div>

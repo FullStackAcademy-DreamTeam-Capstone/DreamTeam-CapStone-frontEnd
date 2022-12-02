@@ -25,7 +25,6 @@ const [ img,  setImg] = useState('')
         setImg(e.target.value)
     }
 
-
     return (
         <div>
             <form onSubmit={handleSubmit}>
