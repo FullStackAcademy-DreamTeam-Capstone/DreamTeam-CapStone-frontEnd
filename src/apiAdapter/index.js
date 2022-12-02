@@ -82,8 +82,6 @@ export async function getProducts() {
     const response = await fetch(`${BASE_URL}/api/products/`);
     const result = await response.json();
 
-    console.log(result, 'line83 api')
-
     return result;
   } catch (error) {
     console.error(error);
@@ -178,10 +176,10 @@ export async function userUpdate(name, password, email, id){
 }
 
 //get Cart
-export async function getCart(){
+export async function getCartItems(){
   const response = await fetch(`${BASE_URL}/api/cart`);
   const result = await response.json();
-  console.log(result)
+  console.log(result, 'plsssss help')
   return result;
 }
 
