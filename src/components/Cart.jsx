@@ -17,6 +17,7 @@ const Cart = (props) => {
 
   return (
     <div className="cartContainer">
+
       <div> I am cart </div>
       <button id="deleteItem"> Remove Item </button>
 
@@ -30,6 +31,21 @@ const Cart = (props) => {
                     <div>{cart.user_id}</div>
                     <div>$ {cart.isActive}</div>
                   </div>
+
+        <div> I am cart </div>
+        <button id="deleteItem"> Remove Item </button>
+
+
+    {/* <div>
+      <div id="cartList">
+        {cart.length ? (
+          cart.map((cart) => {
+            return (
+              <div id="carts" key={`cart-${cart.id}`}>
+                <div id="singleCart">
+                  <div>{cart.user_id}</div>
+                  <div>$ {cart.isActive}</div>
+
                 </div>
               );
             })
@@ -38,6 +54,10 @@ const Cart = (props) => {
           )}
         </div>
       </div>
+
+
+    </div> */}
+
     </div>
   );
 };

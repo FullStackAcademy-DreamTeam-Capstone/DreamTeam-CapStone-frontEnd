@@ -83,8 +83,6 @@ export async function getProducts() {
     const response = await fetch(`${BASE_URL}/api/products/`);
     const result = await response.json();
 
-    console.log(result, 'line83 api')
-
     return result;
   } catch (error) {
     console.error(error);
@@ -179,10 +177,33 @@ export async function userUpdate(name, password, email, id){
 }
 
 //get Cart
-export async function getCart(){
+export async function getCartItems(){
   const response = await fetch(`${BASE_URL}/api/cart`);
   const result = await response.json();
-  console.log(result)
+  console.log(result, 'plsssss help')
   return result;
 }
 
+//create cart item
+export async function createCartItem(){
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        price,
+        quantity
+      }),
+    };
+
+    const response = await fetch(`${BASE_URL}/api/cart_item`, options);
+    console.log("line 203 api", response)
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.log(error)
+  }
+}
