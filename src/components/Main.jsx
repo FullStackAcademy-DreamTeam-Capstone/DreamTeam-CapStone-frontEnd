@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Home, CreateProduct, Profile, Products, Cart } from "./";
-import { login, getProducts } from "../apiAdapter";
+import { login, getProducts, getCart } from "../apiAdapter";
 
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -11,6 +11,7 @@ const Main = () => {
   const [users, setUsers] = useState([]);
   const [userName, setUserName] = useState("");
   const [getProduct, setGetProduct] = useState([]);
+  const [getCart, setGetCart] = useState([]);
 
   useEffect(() => {
     async function fetchProfile() {
@@ -49,6 +50,15 @@ const Main = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const cartData = await getCart();
+      console.log(cartData);
+      setGetCart(cartData);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div id="main">
       <div id="NavbarDiv">
@@ -82,7 +92,7 @@ const Main = () => {
         />
         <Route
         path="/cart"
-        element={<Cart />}
+        element={<Cart getCart={getCart}/>}
         />
       </Routes>
     </div>
