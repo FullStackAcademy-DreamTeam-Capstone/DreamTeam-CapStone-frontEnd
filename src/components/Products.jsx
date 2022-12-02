@@ -36,17 +36,17 @@ const Products = (props) => {
                 <div id="singleProduct">
                   <div>Name: {product.name}</div>
                   <div>Price: ${product.price}</div>
-                  <img src={product.img_url} alt="" />
-                  <div>
-                    <button id="editProduct"> Edit Product </button>
-                    <button id="deleteProduct"> Delete Product </button>
+                  <img src={product.img_url} alt=""/>
+                  <div> 
+                    <NavLink to ={`/products/details/${product.id}`}><button id="seeDetails"> See Details </button></NavLink> 
+                    <NavLink to ='/cart_item/create'><button> Add to Cart </button></NavLink>
+                    </div>
                     <button onClick={handleSubmitAddItemToCart}>
                       {" "}
                       Add to Cart{" "}
                     </button>
                   </div>
                 </div>
-              </div>
             );
           })
         ) : (
@@ -67,7 +67,7 @@ const Products = (props) => {
                   </div>
                 );
               })
-        )}
+        )};
       </div>
       {/* <NavLink to="/products/create">
         <button>Add a Product</button>
