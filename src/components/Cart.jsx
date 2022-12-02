@@ -15,6 +15,7 @@ const Cart = () => {
 return (
     <div className="cartContainer">
         <div> I am cart </div>
+        
     </div>
 )
 }
