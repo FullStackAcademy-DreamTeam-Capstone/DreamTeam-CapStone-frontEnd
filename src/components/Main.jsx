@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct, Profile, Products, Cart } from "./";
+import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails } from "./";
 import { login, getProducts, getCart } from "../apiAdapter";
 
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
@@ -90,6 +90,7 @@ const Main = () => {
           path="/products"
           element={<Products getProduct={getProduct} />}
         />
+        <Route path="/products/create" element={<SeeDetails/>} />
         <Route
         path="/cart"
         element={<Cart getCart={getCart}/>}
