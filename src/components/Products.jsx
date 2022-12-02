@@ -23,8 +23,7 @@ const Products = (props) => {
                   <div>Price: ${product.price}</div>
                   <img src={product.img_url} alt=""/>
                   <div> 
-                    <button id="editProduct"> Edit Product </button>
-                    <button id="deleteProduct"> Delete Product </button> 
+                    <NavLink to ={`/products/details/${product.id}`}><button id="seeDetails"> See Details </button></NavLink> 
                     <NavLink to ='/cart_item/create'><button> Add to Cart </button></NavLink>
                     </div>
                 </div>
