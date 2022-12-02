@@ -47,6 +47,7 @@ export async function login(username, password) {
 
 //Create a product
 export async function createProduct(name, price, img_url) {
+  console.log(name, price, img_url, "THIS IS CREATEPRODUCT")
   try {
     const options = {
       method: "POST",
@@ -157,7 +158,7 @@ export async function userInfo() {
 
 
 // update Profile
-export async function userUpdate(name, password, email, id){
+export async function userUpdate(name, password, email, id, isadmin){
     const options={
       method:"PATCH",
       headers:{
@@ -167,7 +168,8 @@ export async function userUpdate(name, password, email, id){
       body: JSON.stringify({
         name, 
         password,
-        email
+        email,
+        isadmin
       }),
     };
     const response = await fetch(`${BASE_URL}/api/users/${id}`, options);

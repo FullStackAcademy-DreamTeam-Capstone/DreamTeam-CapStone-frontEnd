@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails } from "./";
+import { login, getProducts, getCart } from "../apiAdapter";
+
 import { Navbar, Home, CreateProduct, Profile, Products, Cart, AddToCart } from "./";
 import { login, getProducts, getCartItems, createCartItem } from "../apiAdapter";
 
@@ -104,12 +107,24 @@ const Main = () => {
           path="/products"
           element={<Products getProduct={getProduct}/>}
         />
+
         <Route path="/cart_item/create" element = {<AddToCart 
         cart={cart} 
         setCart={setCart}
         cartItems={cartItems}
         setCartItems={setCartItems}
         getProduct={getProduct} />} />
+
+
+        <Route path="/products/create" element={<SeeDetails/>} />
+
+        <Route path="/create_item/create" element = {<AddToCart 
+        cart={cart} 
+        setCart={setCart}
+        cartItems={cartItems}
+        setCartItems={setCartItems} />} />
+
+
         <Route
         path="/cart"
         element={<Cart />}

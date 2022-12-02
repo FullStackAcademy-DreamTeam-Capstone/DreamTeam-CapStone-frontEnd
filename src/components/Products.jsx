@@ -34,7 +34,7 @@ const Products = (props) => {
                 <div id="singleProduct">
                   <div>Name: {product.name}</div>
                   <div>Price: ${product.price}</div>
-                  <div>{product.img_url}</div>
+                  <img src={product.img_url} alt=""/>
                   <div> 
                     <button id="editProduct"> Edit Product </button>
                     <button id="deleteProduct"> Delete Product </button> 
