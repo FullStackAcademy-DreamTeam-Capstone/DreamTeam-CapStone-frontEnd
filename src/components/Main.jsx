@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails } from "./";
-import { login, getProducts, getCart } from "../apiAdapter";
-
-import { Navbar, Home, CreateProduct, Profile, Products, Cart, AddToCart } from "./";
+import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails, AddToCart } from "./";
 import { login, getProducts, getCartItems, createCartItem } from "../apiAdapter";
 
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
