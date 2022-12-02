@@ -5,7 +5,7 @@ import Products from "./Products";
 import Profile from "./Profile";
 
 const Cart = (props) => {
-  const cart = props.getCart;
+  const products = props.getProducts;
 
   //async delete cart item function
 
@@ -17,25 +17,10 @@ const Cart = (props) => {
 
   return (
     <div className="cartContainer">
-
       <div> I am cart </div>
       <button id="deleteItem"> Remove Item </button>
-
-      {/* <div>
-        <div id="cartList">
-          {cart.length ? (
-            cart.map((cart) => {
-              return (
-                <div id="carts" key={`cart-${cart.id}`}>
-                  <div id="singleCart">
-                    <div>{cart.user_id}</div>
-                    <div>$ {cart.isActive}</div>
-                  </div>
-                </div>
-              ) : (
-    </div> */}
-        </div>
-  )
-}
+    </div>
+  );
+};
 
 export default Cart;
