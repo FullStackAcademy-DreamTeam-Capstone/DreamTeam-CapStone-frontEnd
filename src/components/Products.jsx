@@ -12,8 +12,8 @@ const Products = (props) => {
             return (
               <div id="products" key={`product-${product.id}`}>
                 <div id="singleProduct">
-                  <div>{product.name}</div>
-                  <div>$ {product.price}</div>
+                  <div>Name: {product.name}</div>
+                  <div>Price: ${product.price}</div>
                   <div>{product.img_url}</div>
                 </div>
 
