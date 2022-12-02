@@ -124,7 +124,7 @@ const Main = () => {
 
         <Route
         path="/cart"
-        element={<Cart />}
+        element={<Cart getProduct={getProduct}/>}
         />
       </Routes>
     </div>

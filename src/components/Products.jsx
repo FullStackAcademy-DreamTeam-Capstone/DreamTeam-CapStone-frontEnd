@@ -6,11 +6,21 @@ const Products = (props) => {
   const products = props.getProduct;
   const createCartItems = props.cartItems;
   const cart = props.cart;
+
   const currentUser = props.currentUser;
 
   //ADD TO CART FUNCTION
   const [cartInfo, setCartInfo] = useState({
     price: "",
+
+  console.log(products)
+
+  //ADD TO CART FUNCTION
+  const [cartInfo, setCartInfo] = useState({
+    productId:"",
+    cartId: "",
+    price:"",
+
     quantity: 1,
   });
 
