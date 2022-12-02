@@ -159,7 +159,7 @@ export async function userInfo() {
 
 
 // update Profile
-export async function userUpdate(name, password, email, id){
+export async function userUpdate(name, password, email, id, isadmin){
     const options={
       method:"PATCH",
       headers:{
@@ -169,7 +169,8 @@ export async function userUpdate(name, password, email, id){
       body: JSON.stringify({
         name, 
         password,
-        email
+        email,
+        isadmin
       }),
     };
     const response = await fetch(`${BASE_URL}/api/users/${id}`, options);
