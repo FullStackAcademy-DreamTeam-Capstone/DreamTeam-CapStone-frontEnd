@@ -25,7 +25,7 @@ return (
         <button id="deleteItem"> Remove Item </button>
 
 
-    <div>
+    {/* <div>
       <div id="cartList">
         {cart.length ? (
           cart.map((cart) => {
@@ -44,7 +44,7 @@ return (
         )}
       </div>
 
-    </div>
+    </div> */}
     </div>
   );
 }

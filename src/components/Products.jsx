@@ -3,6 +3,13 @@ import { NavLink } from "react-router-dom";
 
 const Products = (props) => {
   const products = props.getProduct;
+  const createCartItems = props.cartItems;
+  const cart = props.cart;
+
+  async function handleAddToCart(event) {
+    event.preventDefault();
+    createCartItems(products.id, cart.id, products.price, +1);
+  }
 
   return (
     <div>
@@ -18,6 +25,7 @@ const Products = (props) => {
                   <div> 
                     <button id="editProduct"> Edit Product </button>
                     <button id="deleteProduct"> Delete Product </button> 
+                    <NavLink to ='/cart_item/create'><button> Add to Cart </button></NavLink>
                     </div>
                 </div>
 
