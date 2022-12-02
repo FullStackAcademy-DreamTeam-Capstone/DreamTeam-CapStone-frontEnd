@@ -19,6 +19,29 @@ const Cart = (props) => {
     <div className="cartContainer">
       <div> I am cart </div>
       <button id="deleteItem"> Remove Item </button>
+
+      <div>
+        <div id="cartList">
+          {cart.length ? 
+            cart.map((carts) => {
+              return (
+                <div id="carts" key={`carts-${carts.id}`}>
+                  <div id="singleCart">
+                      <div>{cart.user_id}</div>
+                      <div>$ {cart.isActive}</div>
+                  </div>
+                </div>
+              )
+            }) : (
+              <div>Loading Cart..</div>
+            )
+          }
+        </div>
+      </div>
+
+      <div> I am cart </div>
+      <button id="deleteItem"> Remove Item </button>
+
     </div>
   );
 };
