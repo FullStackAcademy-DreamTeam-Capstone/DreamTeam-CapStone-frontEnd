@@ -183,3 +183,26 @@ export async function getCartItems(){
   return result;
 }
 
+//create cart item
+export async function createCartItem(){
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        price,
+        quantity
+      }),
+    };
+
+    const response = await fetch(`${BASE_URL}/api/cart_item`, options);
+    console.log("line 203 api", response)
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.log(error)
+  }
+}
