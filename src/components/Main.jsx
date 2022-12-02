@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Home, CreateProduct, Profile, Products, Cart } from "./";
-import { login, getProducts, getCart } from "../apiAdapter";
+import { login, getProducts, getCartItems } from "../apiAdapter";
 
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -44,7 +44,6 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       const productData = await getProducts();
-      console.log(productData.allActiveProducts, "this is data");
       setGetProduct(productData.allActiveProducts);
     };
     fetchData();
@@ -52,7 +51,7 @@ const Main = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const cartData = await getCart();
+      const cartData = await getCartItems();
       console.log(cartData);
       setGetCart(cartData);
     };
