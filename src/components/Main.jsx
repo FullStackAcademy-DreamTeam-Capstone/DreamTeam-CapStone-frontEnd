@@ -102,7 +102,7 @@ const Main = () => {
         <Route path="/products/create" element={<CreateProduct />} />
         <Route
           path="/products"
-          element={<Products getProduct={getProduct}/>}
+          element={<Products getProduct={getProduct} currentUser={currentUser}/>}
         />
 
         <Route path="/cart_item/create" element = {<AddToCart 
