@@ -15,6 +15,8 @@ const Cart = () => {
 return (
     <div className="cartContainer">
         <div> I am cart </div>
+        <button id="deleteItem"> Remove Item </button>
+
     </div>
 )
 }
