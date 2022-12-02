@@ -47,6 +47,7 @@ export async function login(username, password) {
 
 //Create a product
 export async function createProduct(name, price, img_url) {
+  console.log(name, price, img_url, "THIS IS CREATEPRODUCT")
   try {
     const options = {
       method: "POST",
