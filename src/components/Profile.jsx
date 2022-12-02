@@ -19,8 +19,8 @@ const Profile = (props) => {
         name,
         password,
         email,
-        isadmin,
-        currentUser.id
+        currentUser.id,
+        isadmin
       );
       console.log(updateProfile, "THIS IS UPDATEPROFILE")
       setUsers([...users, updateProfile]);
@@ -38,7 +38,7 @@ const Profile = (props) => {
     fetchData();
   }, []);
 
-  // console.log(currentUser, "this is current user")  
+  console.log(currentUser, "this is current user")  
   return (
     <div>
       <div id="profiles">
@@ -107,7 +107,7 @@ const Profile = (props) => {
               type="checkbox"
               value={isadmin}
               onChange={(e) => {
-                setIsAdmin(e.target.value)
+                setIsAdmin(!isadmin)
               }}
             ></input>
             <button onSubmit={handleSubmit} type="submit">
