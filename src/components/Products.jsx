@@ -15,6 +15,10 @@ const Products = (props) => {
                   <div>Name: {product.name}</div>
                   <div>Price: ${product.price}</div>
                   <div>{product.img_url}</div>
+                  <div> 
+                    <button id="editProduct"> Edit Product </button>
+                    <button id="deleteProduct"> Delete Product </button> 
+                    </div>
                 </div>
 
               </div>

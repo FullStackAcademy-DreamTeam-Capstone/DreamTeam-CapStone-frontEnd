@@ -19,6 +19,12 @@ const Cart = (props) => {
 
 
 return (
+
+    <div className="cartContainer">
+        <div> I am cart </div>
+        <button id="deleteItem"> Remove Item </button>
+
+
     <div>
       <div id="cartList">
         {cart.length ? (
@@ -37,6 +43,7 @@ return (
           <div>Loading Cart..</div>
         )}
       </div>
+
     </div>
   );
 }
