@@ -11,6 +11,7 @@ const Profile = (props) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [update, setUpdate] = useState(false);
+  const [isadmin, setIsAdmin] = useState(false)
 
   async function handleSubmit(e) {
     try {
@@ -18,6 +19,7 @@ const Profile = (props) => {
         name,
         password,
         email,
+        isadmin,
         currentUser.id
       );
       console.log(updateProfile, "THIS IS UPDATEPROFILE")
@@ -36,6 +38,7 @@ const Profile = (props) => {
     fetchData();
   }, []);
 
+  // console.log(currentUser, "this is current user")  
   return (
     <div>
       <div id="profiles">
@@ -45,6 +48,7 @@ const Profile = (props) => {
             <div>{currentUser.username}</div>
             <div>{currentUser.location}</div>
             <div>{currentUser.email}</div>
+
           </>
         ) : (
           <>
@@ -89,7 +93,6 @@ const Profile = (props) => {
               onChange={(e) => {
                 setPassword(e.target.value)
               }}
-              required
             ></input>
             <input
               placeholder="email"
@@ -97,6 +100,14 @@ const Profile = (props) => {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value)
+              }}
+            ></input>
+             <input
+              placeholder="isadmin"
+              type="checkbox"
+              value={isadmin}
+              onChange={(e) => {
+                setIsAdmin(e.target.value)
               }}
             ></input>
             <button onSubmit={handleSubmit} type="submit">
