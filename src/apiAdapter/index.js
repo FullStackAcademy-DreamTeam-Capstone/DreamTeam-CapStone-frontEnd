@@ -177,5 +177,11 @@ export async function userUpdate(name, password, email, id){
     return result;
 }
 
-
+//get Cart
+export async function getCart(){
+  const response = await fetch(`${BASE_URL}/api/cart`);
+  const result = await response.json();
+  console.log(result)
+  return result;
+}
 
