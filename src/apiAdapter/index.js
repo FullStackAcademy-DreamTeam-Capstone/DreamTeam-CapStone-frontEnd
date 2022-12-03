@@ -123,6 +123,8 @@ export async function deleteProduct(productId) {
     }
     const response = await fetch(`${BASE_URL}/api/products/productId`, options)
     const data = await response.json();
+    console.log(data, "this is the data from delete")
+    return data
     
  } catch (error) {
     console.error(error) 
