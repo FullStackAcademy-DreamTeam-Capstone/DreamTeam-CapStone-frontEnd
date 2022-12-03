@@ -13,6 +13,9 @@ const Profile = (props) => {
   const [update, setUpdate] = useState(false);
   const [isadmin, setIsAdmin] = useState(false)
 
+
+
+
   async function handleSubmit(e) {
     try {
       const updateProfile = await userUpdate(
@@ -38,7 +41,8 @@ const Profile = (props) => {
     fetchData();
   }, []);
 
-  console.log(currentUser, "this is current user")  
+  console.log(currentUser, "this is current user from profile")
+
   return (
     <div>
       <div id="profiles">
