@@ -41,11 +41,6 @@ const Products = (props) => {
                     <NavLink to ={`/products/details/${product.id}`}><button id="seeDetails"> See Details </button></NavLink> 
                     <NavLink to ='/cart_item/create'><button> Add to Cart </button></NavLink>
                     </div>
-
-                    <button onClick={handleSubmitAddItemToCart}>
-                      {" "}
-                      Add to Cart{" "}
-                    </button>
                   </div>
                 </div>
             );

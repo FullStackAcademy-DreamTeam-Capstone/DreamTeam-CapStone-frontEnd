@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails, AddToCart } from "./";
+import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails, AddToCart, AdminPanel } from "./";
 
-import { login, getProducts, getCartItems, createCartItem, getCart } from "../apiAdapter";
+import { login, getProducts, getCartItems, createCartItem, getCart, getAllUsers } from "../apiAdapter";
 
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -15,6 +15,14 @@ const Main = () => {
   const [cart, setCart] = useState({});
   const [cartItems, setCartItems] = useState({});
 
+
+useEffect(() => {
+  async function fetchUsers() {
+    const allUsers = await getAllUsers()
+    setUsers(allUsers)
+  }
+  fetchUsers();
+}, [])
 
   //Use Effect for Login
   useEffect(() => {
@@ -107,6 +115,9 @@ const Main = () => {
         />
         
         <Route path="/products/details/:productId" element={<SeeDetails getProduct={getProduct}/>} />
+              
+        <Route path="/adminpanel" element={<AdminPanel currentUser={currentUser} users={users} />} />
+
 
 
         <Route path="/cart_item/create" element = {<AddToCart 

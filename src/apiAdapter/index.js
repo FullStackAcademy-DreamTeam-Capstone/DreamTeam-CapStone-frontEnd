@@ -1,5 +1,25 @@
 const BASE_URL = "http://localhost:8080";
 
+
+export async function getAllUsers() {
+  try {
+    const options = {
+      headers: {
+        "content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      }
+    }
+    const response = await fetch(`${BASE_URL}/api/users`, options);
+    const result = await response.json();
+    console.log(result, "this is the result")
+    return result;
+
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+
 //Register
 export async function register(username, password, name, location, email) {
   try {
