@@ -23,8 +23,6 @@ const Navbar = (props) => {
     email: "",
   });
 
-
-
   async function handleSubmitRegister(event) {
     event.preventDefault();
     const username = registerInfo.username;
@@ -32,7 +30,6 @@ const Navbar = (props) => {
     const name = registerInfo.name;
     const location = registerInfo.location;
     const email = registerInfo.email;
-
 
     if (password.length <= 6) {
       setError("Password must be more than 6 characters long.");
@@ -57,7 +54,6 @@ const Navbar = (props) => {
           name: "",
           location: "",
           email: "",
-
         });
       } else {
         setLoggedIn(false);
@@ -147,6 +143,18 @@ const Navbar = (props) => {
             <NavLink to="profile">
               <button>Profile</button>
             </NavLink>
+            <>
+              {currentUser.isadmin ? (
+                <div>
+                  <NavLink to="/adminpanel">
+                    <button>Admin Panel</button>
+                  </NavLink>
+                  <NavLink to="/products/create">
+                    <button>Add a Product</button>
+                  </NavLink>
+                </div>
+              ) : null}
+            </>
 
             <button id="logOutButton" onClick={logout}>
               LOGOUT
@@ -235,9 +243,6 @@ const Navbar = (props) => {
                   />
 
                   <br />
-
-          
-
 
                   {error ? <small className="error">{error}</small> : null}
 
