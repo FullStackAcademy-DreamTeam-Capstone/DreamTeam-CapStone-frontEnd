@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { deleteProduct } from "../apiAdapter";
 
 const SeeDetails = (props) => {
   const [filterProduct, setFilterProduct] = useState({});
+  const currentUser = props.currentUser
   const { productId } = useParams();
   console.log(typeof productId, "THIS IS PRODUCT ID");
   const products = props.getProduct;
@@ -18,7 +20,9 @@ const SeeDetails = (props) => {
     });
     setFilterProduct(found);
   }, [products]);
-  console.log(filterProduct, "THIS IS FILTERPRODUCT");
+
+  
+
   return (
     <div>
       {filterProduct && filterProduct.name ? (
@@ -26,6 +30,7 @@ const SeeDetails = (props) => {
           <h2>Product Name: {filterProduct.name}</h2>
           <div>Product Price: {filterProduct.price}</div>
           <img src={filterProduct.img_url} alt="" />
+
         </>
       ) : null}
     </div>

@@ -9,4 +9,6 @@ export {default as Cart} from "./Cart"
 export {default as SeeDetails} from "./SeeDetails"
 export {default as AddToCart} from "./AddToCart"
 export {default as AdminPanel} from "./AdminPanel"
+export {default as EditProduct} from "./EditProduct"
+
 

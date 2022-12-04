@@ -1,3 +1,5 @@
+
+
 const BASE_URL = "http://localhost:8080";
 
 
@@ -111,17 +113,19 @@ export async function getProducts() {
 }
 
 
+
 //Deleting a product
 export async function deleteProduct(productId) {
+  console.log(productId, "this is prodict id")
  try {
     const options = {
         method: "DELETE",
-        header: {
+        headers: {
             'Content-type':"application/json",
             "Authorization": `Bearer ${localStorage.getItem("token")}`
         }
     }
-    const response = await fetch(`${BASE_URL}/api/products/productId`, options)
+    const response = await fetch(`${BASE_URL}/api/products/${productId}`, options)
     const data = await response.json();
     console.log(data, "this is the data from delete")
     return data

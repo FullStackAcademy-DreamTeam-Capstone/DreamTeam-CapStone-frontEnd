@@ -128,7 +128,7 @@ useEffect(() => {
         getProduct={getProduct} />} />
 
 
-        <Route path="/products/create" element={<SeeDetails/>} />
+        <Route path="/products/create" element={<SeeDetails currentUser={currentUser}/>} />
 
        
 
