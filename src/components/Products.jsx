@@ -9,6 +9,8 @@ const Products = (props) => {
   const currentUser = props.currentUser;
   const {productId} = useParams();
 
+  const [editActive, setEditActive] = useState(false);
+
   //ADD TO CART FUNCTION
   const [cartInfo, setCartInfo] = useState({
     productId: "",
@@ -26,15 +28,17 @@ const Products = (props) => {
     const response = await createCartItem(price, quantity);
   }
 
-  async function handleDeleteProduct(e) {
-    e.preventDefault()
+  async function handleDeleteProduct(productId) {
 
     const deletedProduct = await deleteProduct(productId)
     if(deletedProduct.success) {
-      navigate("/")
+      //TO DO...fix this asap
+      Navigate("/")
     }
-
   }
+
+
+console.log("All products: " + props.getProduct)
 
   return (
     <div>
@@ -54,7 +58,7 @@ const Products = (props) => {
                       <NavLink to="/cart_item/create">
                         <button> Add to Cart </button>
                       </NavLink>
-                      <button onClick={handleDeleteProduct}>Delete Product</button>
+                      <button onClick={() => handleDeleteProduct(product.id)}>Delete Product</button>
                     </div>
                   </div>
                 </div>
@@ -80,7 +84,6 @@ const Products = (props) => {
                 </div>
               );
             })}
-        ;
       </div>
     </div>
   );

@@ -106,14 +106,14 @@ const Profile = (props) => {
                 setEmail(e.target.value)
               }}
             ></input>
-             {/* <input
+             <input
               placeholder="isadmin"
               type="checkbox"
               value={isadmin}
               onChange={(e) => {
                 setIsAdmin(!isadmin)
               }}
-            ></input> */}
+            ></input>
             <button onSubmit={handleSubmit} type="submit">
               Submit
             </button>
