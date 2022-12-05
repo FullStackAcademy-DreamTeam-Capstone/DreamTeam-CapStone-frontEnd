@@ -39,7 +39,7 @@ return (
           value={imgUrl} 
           onChange={(e) => setImgUrl(e.target.value)}
         />
-        <button>Edit Routine</button>
+        <button>Edit Product</button>
         </form>
     </div>
 )
