@@ -5,21 +5,21 @@ import { userInfo, userUpdate } from "../apiAdapter";
 const AdminPanel = (props) => {
   const currentUser = props.currentUser;
   const users = props.users;
+  const setUsers = props.setUsers;
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [update, setUpdate] = useState(false);
-  const [isadmin, setIsAdmin] = useState(false)
+  const [isadmin, setIsAdmin] = useState(false)     
 
 async function handleSubmit(user) {
 console.log(user, "this is user ")
 try {
     const updateProfile = await userUpdate(
-      name,
-      password,
-      email,
-      currentUser.id,
-      isadmin
+      user.name,
+      user.password,
+      user.email,
+      user.id,
+      true
     );
     console.log(updateProfile, "THIS IS UPDATEPROFILE")
     setUsers([...users, updateProfile]);
@@ -31,20 +31,23 @@ try {
   return (
     <div>
       <div>
-        {currentUser.isadmin ? (
+        {currentUser && currentUser.isadmin && users && users.length ? (
           users.map((user) => {
+            console.log(user, "this is the user")
             return (
-              <div id="users" key={`user-${user.id}`}>
+              <div id="users" key={`usersAdminPanel-${user.id}`}>
                 <div id="singleUser">
                   <div>Name: {user.name}</div>
-                  <div>Username: ${user.username}</div>
-                  <div>Location: ${user.location}</div>
-                  <div>Email: ${user.email}</div>
+                  <div>Username: {user.username}</div>
+                  <div>Location: {user.location}</div>
+                  <div>Email: {user.email}</div>
+                  <div>Admin: {user.isadmin ? "yes" : "no"}</div>
+
                 </div>
                 <form
             onSubmit={(e) => {
               e.preventDefault();
-              handleSubmit();
+              handleSubmit(user);
             }}
           >
             <input
@@ -71,7 +74,6 @@ try {
                 setEmail(e.target.value)
               }}
             ></input>
-
              <input
               placeholder="isadmin"
               type="checkbox"
@@ -80,7 +82,7 @@ try {
                 setIsAdmin(!isadmin)
               }}
             ></input>
-            <button onSubmit={handleSubmit} type="submit">
+            <button type="submit">
               Submit
             </button>
           </form>

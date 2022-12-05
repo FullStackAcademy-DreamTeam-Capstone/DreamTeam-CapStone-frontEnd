@@ -117,9 +117,9 @@ useEffect(() => {
           element={<Products getProduct={getProduct} currentUser={currentUser}/>}
         />
         
-        <Route path="/products/details/:productId" element={<SeeDetails getProduct={getProduct}/>} />
+        <Route path="/products/details/:productId" element={<SeeDetails currentUser={currentUser} getProduct={getProduct}/>} />
               
-        <Route path="/adminpanel" element={<AdminPanel currentUser={currentUser} users={users} />} />
+        <Route path="/adminpanel" element={<AdminPanel currentUser={currentUser} users={users} setUsers={setUsers} />} />
 
 
 
