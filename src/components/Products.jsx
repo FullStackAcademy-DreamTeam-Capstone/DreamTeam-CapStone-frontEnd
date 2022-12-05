@@ -11,6 +11,7 @@ const Products = (props) => {
   const currentUser = props.currentUser;
   const {productId} = useParams();
   const addToCart = props.addToCart;
+  const images = props.product;
 
   const [editActive, setEditActive] = useState(false);
 
@@ -53,7 +54,7 @@ console.log("All products: " + props.getProduct)
                   <div id="singleProduct">
                     <div>Name: {product.name}</div>
                     <div>Price: ${product.price}</div>
-                    <img src={product.img_url} alt="" />
+                    <img src={product.img_url} width="20%" />
                     <div>
                       <NavLink to={`/products/details/${product.id}`}>
                         <button id="seeDetails"> See Details </button>
@@ -69,9 +70,12 @@ console.log("All products: " + props.getProduct)
               return (
                 <div id="products" key={`product-${product.id}`}>
                   <div id="singleProduct">
+                    <div>
+                      
+                      </div>
                     <div>Name: {product.name}</div>
                     <div>Price: ${product.price}</div>
-                    <img src={product.img_url} alt="" />
+                    <img src={images.img_url} />
                     <div>
                       <NavLink to={`/products/details/${product.id}`}>
                         <button id="seeDetails"> See Details </button>

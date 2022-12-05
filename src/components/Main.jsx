@@ -14,7 +14,26 @@ const Main = () => {
   const [getProduct, setGetProduct] = useState([]);
   const [cart, setCart] = useState([]);
   const [cartItems, setCartItems] = useState({});
+  const [product, setProduct] = useState([
+    {
+      name:'Shoes' ,
+      price:'300' ,
+      img_url:'https://media.istockphoto.com/id/1089844082/photo/close-up-of-sporty-woman-tying-shoelace-while-kneeling-outdoor-in-background-bridge-fitness.jpg?s=612x612&w=0&k=20&c=Wv91q9ihnMYw94wiR1ptwfajHYyR_y1dtUnTb6Dn5Ys='
 
+    },
+    {
+      name:'Watch' ,
+      price:'500' ,
+      img_url:'https://media.istockphoto.com/id/533714204/photo/businessman-checking-time-from-watch.jpg?s=612x612&w=0&k=20&c=bJN94WW68Rw8uEogp3GKtBYnhcrNFNnf1SkWb0KDvGo='
+
+    },
+    {
+      name:'TV' ,
+      price:'1000' ,
+      img_url:'https://media.istockphoto.com/id/1146517858/photo/tv-mockup-in-living-room-at-night-tv-screen-tv-cabinet-chairs-bookshelf.jpg?s=612x612&w=0&k=20&c=pVQx2e1A9CCQ0DarsAkbB0iXK6IdEEIs6LrjnQexB18=' 
+
+    }
+  ])
 
 useEffect(() => {
   async function fetchUsers() {
@@ -120,7 +139,7 @@ useEffect(() => {
 
         <Route
           path="/products"
-          element={<Products getProduct={getProduct} currentUser={currentUser} addToCart={addToCart}/>}
+          element={<Products getProduct={getProduct} currentUser={currentUser} addToCart={addToCart} product={product}/>}
         />
         
         <Route path="/products/details/:productId" element={<SeeDetails currentUser={currentUser} getProduct={getProduct}/>} />
