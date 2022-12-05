@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { Navigate, NavLink, useParams } from "react-router-dom";
 import { createCartItem, deleteProduct } from "../apiAdapter";
+// import { EditProduct } from "./";
+
 
 const Products = (props) => {
   const products = props.getProduct;
@@ -74,11 +76,14 @@ console.log("All products: " + props.getProduct)
                     <div>
                       <NavLink to={`/products/details/${product.id}`}>
                         <button id="seeDetails"> See Details </button>
+
                       </NavLink>
 
                       <NavLink to="/cart_item/create">
                         <button> Add to Cart </button>
                       </NavLink>
+
+                     
                     </div>
                   </div>
                 </div>

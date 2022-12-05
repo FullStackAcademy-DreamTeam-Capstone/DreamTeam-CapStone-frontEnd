@@ -5,7 +5,7 @@ const AdminPanel = (props) => {
 const currentUser = props.currentUser
 const users = props.users
 
-// console.log(users.allUsers[0], "this is usrs from admin panel")
+console.log(users, "this is usrs from admin panel")
 return(
     <div>
         <div>

@@ -156,6 +156,7 @@ export async function updateProduct(name, price, img_url, id) {
           };
 
           const response = await fetch(`${BASE_URL}/api/products/${id}`, options)
+          return response
     } catch (error) {
         console.error(error) 
         return (
