@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails, AddToCart, AdminPanel, EditProduct } from "./";
+import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails, AdminPanel, EditProduct } from "./";
 
 import { login, getProducts, getCartItems, createCartItem, getCart, getAllUsers } from "../apiAdapter";
 
@@ -84,6 +84,7 @@ useEffect(() => {
 
   const addToCart = (product) => {
     console.log(product)
+    setCart([...cart, {...product, quantity: 1}])
   }
 
 
@@ -128,14 +129,6 @@ useEffect(() => {
 
 
 
-        <Route path="/cart_item/create" element = {<AddToCart 
-        cart={cart} 
-        setCart={setCart}
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-        getProduct={getProduct} />} />
-
-
         <Route path="/products/create" element={<SeeDetails currentUser={currentUser}/>} />
 
        
@@ -143,7 +136,7 @@ useEffect(() => {
 
         <Route
         path="/cart"
-        element={<Cart getProduct={getProduct}/>}
+        element={<Cart getProduct={getProduct} cart={cart}/>}
         />
       </Routes>
     </div>
