@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { deleteProduct } from "../apiAdapter";
-import { EditProduct } from "./";
+// import { EditProduct } from "./";
 
 
 const SeeDetails = (props) => {
@@ -32,7 +32,7 @@ const SeeDetails = (props) => {
           <h2>Product Name: {filterProduct.name}</h2>
           <div>Product Price: {filterProduct.price}</div>
           <img src={filterProduct.img_url} alt="" />
-          <EditProduct />
+
         </>
         
       ) : null}
