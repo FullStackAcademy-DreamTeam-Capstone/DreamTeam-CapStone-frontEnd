@@ -9,10 +9,21 @@ const Cart = (props) => {
   const products = props.getProducts;
   const cart = props.cart;
   const [CART, setCART] = useState([]);
+  const initialValue = 0;
+  const [totalPrice, setTotalPrice] = useState()
 
   useEffect(() => {
-    setCART(cart)
-  }, [cart])
+    setCART(cart);
+  }, [cart]);
+
+
+  const CalculateCartTotal = () => {
+    const result = CART.reduce((accumulator, d) => {
+      return accumulator + Number(d.price)
+    }, 0);
+    setTotalPrice(result)
+    }
+
 
   return (
     <div className="cartContainer">
@@ -21,25 +32,34 @@ const Cart = (props) => {
 
       <div>
         <div id="cartList">
-          {CART.length ? 
+          {CART.length ? (
             CART.map((itemInfo, cartIndex) => {
               return (
-                <><img src={itemInfo.img_url} />
-                <div id="singleCart">
-                  <div>{itemInfo.name}</div>
-                  <div>${itemInfo.price}</div>
-                </div></>
-              )
-            }) : (
-              <div>Loading Cart..</div>
-            )
-          }
+                <>
+                  <img src={itemInfo.img_url} />
+                  <div id="singleCart">
+                    <div>{itemInfo.name}</div>
+                    <div>${itemInfo.price}</div>
+                  </div>
+                </>
+              );
+            })
+          ) : (
+            <div>Loading Cart..</div>
+          )}
+        </div>
+        <div>
+          
+          <button onClick={CalculateCartTotal}>
+            
+            Calculate Total Cost
+          </button>
+          Total Price: {totalPrice}
         </div>
       </div>
 
       <div> I am cart </div>
       <button id="deleteItem"> Remove Item </button>
-
     </div>
   );
 };
