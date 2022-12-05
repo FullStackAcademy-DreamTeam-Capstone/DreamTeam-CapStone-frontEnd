@@ -1,4 +1,4 @@
-import react from "react";
+import {React, useState} from "react";
 import { useParams } from "react-router-dom";
 import { updateProduct } from "../apiAdapter";
 
@@ -6,12 +6,12 @@ const EditProduct = (props) => {
 const {productId} = useParams();
 const [name, setName] = useState("");
 const [price, setPrice] = useState("");
-const [img, setImg] = useState("");
+const [imgUrl, setImgUrl] = useState("");
 
 
 const handleEdit =  async (e) => {
     e.preventDefault();
-    const editedProduct = await updateProduct(routineId, name, price, img_url);
+    const editedProduct = await updateProduct(name, price, imgUrl, productId);
     console.log(editedProduct)
 };
 
@@ -30,20 +30,19 @@ return (
           type="text"
           required
           value={price}
-          onChange={(e) => setGoal(e.target.value)}
+          onChange={(e) => setPrice(e.target.value)}
         ></input>
-        <label htmlFor="img_url"> Product Image </label>
+        <label htmlFor="imgUrl"> Product Image </label>
         <input
           type="text"
           name="img"
-          value={img} // does value needs to be something else?
-          onChange={(e) => setImg(e.target.value)}
+          value={imgUrl} 
+          onChange={(e) => setImgUrl(e.target.value)}
         />
         <button>Edit Routine</button>
         </form>
     </div>
 )
-
 }
 
 export default EditProduct;

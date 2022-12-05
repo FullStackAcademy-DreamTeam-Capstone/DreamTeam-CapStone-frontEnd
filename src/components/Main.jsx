@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails, AddToCart, AdminPanel } from "./";
+import { Navbar, Home, CreateProduct, Profile, Products, Cart, SeeDetails, AddToCart, AdminPanel, EditProduct } from "./";
 
 import { login, getProducts, getCartItems, createCartItem, getCart, getAllUsers } from "../apiAdapter";
 
@@ -109,6 +109,9 @@ useEffect(() => {
           }
         />
         <Route path="/products/create" element={<CreateProduct />} />
+
+
+
         <Route
           path="/products"
           element={<Products getProduct={getProduct} currentUser={currentUser}/>}
