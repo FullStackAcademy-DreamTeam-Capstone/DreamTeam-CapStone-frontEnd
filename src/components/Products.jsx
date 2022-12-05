@@ -10,6 +10,7 @@ const Products = (props) => {
   const cart = props.cart;
   const currentUser = props.currentUser;
   const {productId} = useParams();
+  const addToCart = props.addToCart;
 
   const [editActive, setEditActive] = useState(false);
 
@@ -57,9 +58,7 @@ console.log("All products: " + props.getProduct)
                       <NavLink to={`/products/details/${product.id}`}>
                         <button id="seeDetails"> See Details </button>
                       </NavLink>
-                      <NavLink to="/cart_item/create">
-                        <button> Add to Cart </button>
-                      </NavLink>
+                        <button onClick={() => addToCart(product)}> Add to Cart </button>
                       <button onClick={() => handleDeleteProduct(product.id)}>Delete Product</button>
                     </div>
                   </div>
@@ -79,9 +78,8 @@ console.log("All products: " + props.getProduct)
 
                       </NavLink>
 
-                      <NavLink to="/cart_item/create">
-                        <button> Add to Cart </button>
-                      </NavLink>
+                      
+                        <button onClick={() => addToCart(product)}> Add to Cart </button>
 
                      
                     </div>
