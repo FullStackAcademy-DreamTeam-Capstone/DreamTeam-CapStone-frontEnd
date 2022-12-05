@@ -12,7 +12,7 @@ const Main = () => {
   const [users, setUsers] = useState([]);
   const [userName, setUserName] = useState("");
   const [getProduct, setGetProduct] = useState([]);
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState([]);
   const [cartItems, setCartItems] = useState({});
 
 
@@ -82,6 +82,11 @@ useEffect(() => {
     fetchData();
   }, []);
 
+  const addToCart = (product) => {
+    console.log(product)
+  }
+
+
   return (
     <div id="main">
       <div id="NavbarDiv">
@@ -114,7 +119,7 @@ useEffect(() => {
 
         <Route
           path="/products"
-          element={<Products getProduct={getProduct} currentUser={currentUser}/>}
+          element={<Products getProduct={getProduct} currentUser={currentUser} addToCart={addToCart}/>}
         />
         
         <Route path="/products/details/:productId" element={<SeeDetails getProduct={getProduct}/>} />
