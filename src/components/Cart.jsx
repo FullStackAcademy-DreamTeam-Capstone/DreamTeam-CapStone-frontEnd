@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { getCart } from "../apiAdapter";
 import Products from "./Products";
@@ -6,14 +7,12 @@ import Profile from "./Profile";
 
 const Cart = (props) => {
   const products = props.getProducts;
+  const cart = props.cart;
+  const [CART, setCART] = useState([]);
 
-  //async delete cart item function
-
-  //async edit cart item function
-
-  //function to add all the item prices to get total price
-
-  //buy button, does nothing but clear the cart and say that you have purchased the items
+  useEffect(() => {
+    setCART(cart)
+  }, [cart])
 
   return (
     <div className="cartContainer">
@@ -22,15 +21,14 @@ const Cart = (props) => {
 
       <div>
         <div id="cartList">
-          {cart.length ? 
-            cart.map((carts) => {
+          {CART.length ? 
+            CART.map((itemInfo, cartIndex) => {
               return (
-                <div id="carts" key={`carts-${carts.id}`}>
-                  <div id="singleCart">
-                      <div>{cart.user_id}</div>
-                      <div>$ {cart.isActive}</div>
-                  </div>
-                </div>
+                <><img src={itemInfo.img_url} />
+                <div id="singleCart">
+                  <div>{itemInfo.name}</div>
+                  <div>${itemInfo.price}</div>
+                </div></>
               )
             }) : (
               <div>Loading Cart..</div>
