@@ -11,7 +11,7 @@ const Profile = (props) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [update, setUpdate] = useState(false);
-  const [isadmin, setIsAdmin] = useState(false)
+
 
 
 
