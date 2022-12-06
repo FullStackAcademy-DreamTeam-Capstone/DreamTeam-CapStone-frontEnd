@@ -94,3 +94,23 @@ body {
 display: flex;
 align-items: center;
 }
+
+
+#adminHeader{
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  background-color: black;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: larger;
+}
+
+#allUsers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 30px;
+}

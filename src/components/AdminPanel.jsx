@@ -30,7 +30,8 @@ try {
 
   return (
     <div>
-      <div>
+      <div id="adminHeader"><h1>Admin Panel</h1></div>
+      <div id="allUsers">
         {currentUser && currentUser.isadmin && users && users.length ? (
           users.map((user) => {
             console.log(user, "this is the user")
@@ -74,6 +75,7 @@ try {
                 setEmail(e.target.value)
               }}
             ></input>
+             <label>Admin?</label>
              <input
               placeholder="isadmin"
               type="checkbox"
