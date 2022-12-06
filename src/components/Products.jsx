@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Navigate, NavLink, useParams } from "react-router-dom";
 import { createCartItem, deleteProduct } from "../apiAdapter";
 // import { EditProduct } from "./";
@@ -33,14 +33,12 @@ const Products = (props) => {
   }
 
   async function handleDeleteProduct(productId) {
-
     const deletedProduct = await deleteProduct(productId)
     if(deletedProduct.success) {
       //TO DO...fix this asap
       Navigate("/")
     }
   }
-
 
 console.log("All products: " + props.getProduct)
 
@@ -59,7 +57,7 @@ console.log("All products: " + props.getProduct)
                       <NavLink to={`/products/details/${product.id}`}>
                         <button id="seeDetails"> See Details </button>
                       </NavLink>
-                        <button onClick={() => addToCart(product)}> Add to Cart </button>
+                        <button onClick={() => addToCart(product)} > Add to Cart </button>
                       <button onClick={() => handleDeleteProduct(product.id)}>Delete Product</button>
                     </div>
                     <p>---------------------------------------------------------------</p>
