@@ -20,9 +20,12 @@ const Cart = (props) => {
     setCART(cart);
   }, [cart]);
 
+
   const CalculateCartTotal = () => {
+
     const result = localCart.reduce((accumulator, d) => {
       return accumulator + Number(d.price);
+
     }, 0);
     setTotalPrice(result);
   };
@@ -74,7 +77,9 @@ const Cart = (props) => {
                             ? { ...item, quantity: item.quantity + 1 }
                             : item;
                         });
+
                         setLocalCart(cartQtyFinal);
+
                       }}
                     >
                       +

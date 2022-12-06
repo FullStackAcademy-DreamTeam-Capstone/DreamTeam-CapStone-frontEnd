@@ -37,7 +37,6 @@ body {
 }
 
 
-
 /*HOME PAGE CSS */
 #homeImage {
   margin-left: auto;
@@ -45,19 +44,44 @@ body {
   text-align: center;
 }
 
-#holidayImages {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 200px;
-  justify-content: space-evenly;
+#HomeContainer {
+  background-color: #DBCBBD;
+}
 
+#homeImage:hover {
+  scale: 1.05;
+}
+
+#holidayImagesRow {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+#largeHomePic {
+  border: #3F4E4F solid 4px;
+  border-radius: 5%;
+ box-shadow: 8px 3px 5px 0px rgb(41, 41, 41);
+}
+
+img#holidayImages {
+  height: 200px;
+  border: #3F4E4F solid 5px;
+  border-radius: 5%;
+  box-shadow: 8px 3px 5px 0px rgb(41, 41, 41);
+}
+
+img#holidayImages:hover {
+  scale: 1.05;
 }
 
 #homeHeader {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 20px;
+  background-color: #3F4E4F;
+  padding: 20px;
+  color: #DBCBBD;
 }
 
 #row {
@@ -65,6 +89,15 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
   margin-top: 30px;
+}
+
+.rowText {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: #3F4E4F;
+  padding: 20px;
+  color: #DBCBBD;
 }
 
 .rowText {
@@ -93,4 +126,129 @@ body {
 #footerRow{
 display: flex;
 align-items: center;
+}
+
+
+
+/* Admin Panel CSS */
+#adminHeader{
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  background-color: #2C3639;
+  color: #DCD7C9;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: larger;
+}
+
+#allUsers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 30px;
+  background-color: #DBCBBD;
+  padding: 30px;
+  min-height: 60vh;
+}
+
+#singleUser {
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  border-radius: 5px;
+  color: #DCD7C9;
+  background-color: #3F4E4F;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: large;
+  padding: 8px
+}
+
+#users {
+  padding-top: 15px;
+  min-width: 500px;
+}
+
+/*Profile page CSS*/
+
+#profiles {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #DCD7C9;
+  color: #DCD7C9;
+  height: 80vh;
+}
+
+#border {
+  box-shadow: 0px 0px 12px black;
+  display: flex;
+  justify-content: space-between;
+  width: 1107px;
+  background-color: #3F4E4F;
+}
+
+#profiledata {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 0px 12px black;
+  border-radius: 8px;
+  height: 28vh;
+  margin: 30px;
+  padding: 8px;
+}
+
+#userProfile {
+  box-shadow: 0px 0px 12px black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 10vh;
+  margin: 30px;
+  padding: 8px;
+  font-size: 28px;
+}
+
+/* Products Page CSS */
+#productsHeader{
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  background-color: #2C3639;
+  color: #DCD7C9;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: larger;
+}
+
+#allProducts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 30px;
+  background-color: #DBCBBD;
+  padding: 30px;
+}
+
+#singleProduct {
+  display: flex;
+  flex-direction: column;
+  border: 1px black solid;
+  border-radius: 5px;
+  color: #DCD7C9;
+  background-color: #3F4E4F;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: large;
+  padding: 8px
+}
+
+#products {
+  padding-top: 15px;
+  min-width: 500px;
+  min-height: 270px;
+  max-width: 500px;
+  max-height: 270px;
 }

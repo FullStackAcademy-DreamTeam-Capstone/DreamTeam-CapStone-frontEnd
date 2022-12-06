@@ -3,13 +3,12 @@ import { Navigate, NavLink, useParams } from "react-router-dom";
 import { createCartItem, deleteProduct } from "../apiAdapter";
 // import { EditProduct } from "./";
 
-
 const Products = (props) => {
   const products = props.getProduct;
   const createCartItems = props.cartItems;
   const cart = props.cart;
   const currentUser = props.currentUser;
-  const {productId} = useParams();
+  const { productId } = useParams();
   const addToCart = props.addToCart;
   const images = props.product;
 
@@ -33,18 +32,23 @@ const Products = (props) => {
   }
 
   async function handleDeleteProduct(productId) {
-    const deletedProduct = await deleteProduct(productId)
-    if(deletedProduct.success) {
+    const deletedProduct = await deleteProduct(productId);
+    if (deletedProduct.success) {
       //TO DO...fix this asap
-      Navigate("/")
+      Navigate("/");
     }
   }
 
-console.log("All products: " + props.getProduct)
+
+  console.log("All products: " + props.getProduct);
+
 
   return (
     <div>
-      <div id="productList">
+      <div id="productsHeader">
+        <h1>Products</h1>
+      </div>
+      <div id="allProducts">
         {currentUser.isadmin
           ? products.map((product) => {
               return (
@@ -57,10 +61,15 @@ console.log("All products: " + props.getProduct)
                       <NavLink to={`/products/details/${product.id}`}>
                         <button id="seeDetails"> See Details </button>
                       </NavLink>
-                        <button onClick={() => addToCart(product)} > Add to Cart </button>
-                      <button onClick={() => handleDeleteProduct(product.id)}>Delete Product</button>
+
+                      <button onClick={() => addToCart(product)}>
+                        {" "}
+                        Add to Cart{" "}
+                      </button>
+                      <button onClick={() => handleDeleteProduct(product.id)}>
+                        Delete Product
+                      </button>
                     </div>
-                    <p>---------------------------------------------------------------</p>
                   </div>
                 </div>
               );
@@ -69,22 +78,19 @@ console.log("All products: " + props.getProduct)
               return (
                 <div id="products" key={`product-${product.id}`}>
                   <div id="singleProduct">
-                    <div>
-                      
-                      </div>
                     <span>Name: {product.name}</span>
                     <span>Price: ${product.price}</span>
-                    <img src={images.img_url} />
+                    <img src={product.img_url} width="20%" />
+
                     <div>
                       <NavLink to={`/products/details/${product.id}`}>
                         <button id="seeDetails"> See Details </button>
-
                       </NavLink>
 
-                      
-                        <button onClick={() => addToCart(product)}> Add to Cart </button>
-
-                     
+                      <button onClick={() => addToCart(product)}>
+                        {" "}
+                        Add to Cart{" "}
+                      </button>
                     </div>
                   </div>
                 </div>
