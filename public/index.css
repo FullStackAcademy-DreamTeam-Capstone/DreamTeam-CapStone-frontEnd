@@ -114,3 +114,18 @@ align-items: center;
   padding-left: 30px;
   padding-top: 30px;
 }
+
+/*Profile page CSS*/
+
+#profiles {
+  display: flex;
+  justify-content: right;
+  height: 80vh;
+}
+
+#profiledata {
+  display: flex;
+  flex-direction: column;
+  border: solid black;
+}
+

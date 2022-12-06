@@ -44,15 +44,14 @@ const Profile = (props) => {
   console.log(currentUser, "this is current user from profile")
 
   return (
-    <div>
-      <div id="profiles">
+    <div id="profiles">
+      <div id="profiledata">
         {currentUser.name ? (
           <>
-            <div>{currentUser.name}</div>
-            <div>{currentUser.username}</div>
-            <div>{currentUser.location}</div>
-            <div>{currentUser.email}</div>
-
+            <div>Username: {currentUser.username}</div>
+            <div>User: {currentUser.name}</div>
+            <div>Location: {currentUser.location}</div>
+            <div>Email: {currentUser.email}</div>
           </>
         ) : (
           <>
