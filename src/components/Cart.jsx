@@ -24,16 +24,6 @@ const Cart = (props) => {
     setTotalPrice(result);
   };
 
-  const handleIncrement = () => {
-    setQuantity(CART.quantity + 1);
-  };
-
-  const handleDecrement = () => {
-    if (quantity > 0) {
-      setQuantity(CART.quantity - 1);
-    }
-  };
-
   return (
     <div className="cartContainer">
       <div>
@@ -42,13 +32,39 @@ const Cart = (props) => {
             CART.map((itemInfo, cartIndex) => {
               return (
                 <>
-                  <img src={itemInfo.img_url} width="20%"/>
+                  <img src={itemInfo.img_url} width="20%" />
                   <div id="singleCart">
                     <p>{itemInfo.name}</p>
                     <p>${itemInfo.price}</p>
-                    <button onClick={handleDecrement}>-</button>
+                    <button
+                      onClick={() => {
+                        const _CART = CART.map((item, index) => {
+                          return cartIndex === index
+                            ? {
+                                ...item,
+                                quantity:
+                                  item.quantity > 0 ? item.quantity - 1 : 0,
+                              }
+                            : item;
+                        });
+                        setCART(_CART);
+                      }}
+                    >
+                      -
+                    </button>
                     <span> {itemInfo.quantity} </span>
-                    <button onClick={handleIncrement}>+</button>
+                    <button
+                      onClick={() => {
+                        const _CART = CART.map((item, index) => {
+                          return cartIndex === index
+                            ? { ...item, quantity: item.quantity + 1 }
+                            : item;
+                        });
+                        setCART(_CART);
+                      }}
+                    >
+                      +
+                    </button>
                   </div>
                 </>
               );
