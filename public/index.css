@@ -44,19 +44,44 @@ body {
   text-align: center;
 }
 
-#holidayImages {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: 200px;
-  justify-content: space-evenly;
+#HomeContainer {
+  background-color: #DBCBBD;
+}
 
+#homeImage:hover {
+  scale: 1.05;
+}
+
+#holidayImagesRow {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+#largeHomePic {
+  border: #3F4E4F solid 4px;
+  border-radius: 5%;
+ box-shadow: 8px 3px 5px 0px rgb(41, 41, 41);
+}
+
+img#holidayImages {
+  height: 200px;
+  border: #3F4E4F solid 5px;
+  border-radius: 5%;
+  box-shadow: 8px 3px 5px 0px rgb(41, 41, 41);
+}
+
+img#holidayImages:hover {
+  scale: 1.05;
 }
 
 #homeHeader {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 20px;
+  background-color: #3F4E4F;
+  padding: 20px;
+  color: #DBCBBD;
 }
 
 #row {
@@ -64,6 +89,15 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
   margin-top: 30px;
+}
+
+.rowText {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: #3F4E4F;
+  padding: 20px;
+  color: #DBCBBD;
 }
 
 .rowText {
