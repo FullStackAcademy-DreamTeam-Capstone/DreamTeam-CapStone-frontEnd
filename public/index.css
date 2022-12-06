@@ -12,11 +12,25 @@ body {
   flex-grow: 1;
   max-height: 10%;
   min-height: 40px;
-  background-color: #222222;
+  background-color: #172021;
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+#navbar button {
+  background-color: #172021;
+  color: white;
+  border: white 2px solid;
+  border-radius: 15%;
+  text-decoration: none;
+  margin: 6px;
+}
+
+#navbar button:hover {
+  cursor: pointer;
+  scale: 1.05;
 }
 
 #registerPopup {
