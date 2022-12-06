@@ -37,7 +37,6 @@ body {
 }
 
 
-
 /*HOME PAGE CSS */
 #homeImage {
   margin-left: auto;
@@ -117,6 +116,7 @@ align-items: center;
   padding-top: 30px;
   background-color: #DBCBBD;
   padding: 30px;
+  min-height: 60vh;
 }
 
 #singleUser {
@@ -140,13 +140,41 @@ align-items: center;
 
 #profiles {
   display: flex;
-  justify-content: right;
+  justify-content: space-evenly;
+  background-color: #DCD7C9;
+  color: #DCD7C9;
   height: 80vh;
+}
+
+#border {
+  box-shadow: 0px 0px 12px black;
+  display: flex;
+  justify-content: space-between;
+  width: 1107px;
+  background-color: #3F4E4F;
 }
 
 #profiledata {
   display: flex;
   flex-direction: column;
-  border: solid black;
+  justify-content: space-between;
+  box-shadow: 0px 0px 12px black;
+  border-radius: 8px;
+  height: 28vh;
+  margin: 30px;
+  padding: 8px;
 }
+
+#userProfile {
+  box-shadow: 0px 0px 12px black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 10vh;
+  margin: 30px;
+  padding: 8px;
+  font-size: 28px;
+}
+
 
