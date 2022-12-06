@@ -52,8 +52,8 @@ console.log("All products: " + props.getProduct)
               return (
                 <div id="products" key={`product-${product.id}`}>
                   <div id="singleProduct">
-                    <div>Name: {product.name}</div>
-                    <div>Price: ${product.price}</div>
+                    <p>Name: {product.name} </p>
+                    <p>Price: ${product.price} </p>
                     <img src={product.img_url} width="20%" />
                     <div>
                       <NavLink to={`/products/details/${product.id}`}>
@@ -62,6 +62,7 @@ console.log("All products: " + props.getProduct)
                         <button onClick={() => addToCart(product)}> Add to Cart </button>
                       <button onClick={() => handleDeleteProduct(product.id)}>Delete Product</button>
                     </div>
+                    <p>---------------------------------------------------------------</p>
                   </div>
                 </div>
               );
@@ -73,8 +74,8 @@ console.log("All products: " + props.getProduct)
                     <div>
                       
                       </div>
-                    <div>Name: {product.name}</div>
-                    <div>Price: ${product.price}</div>
+                    <span>Name: {product.name}</span>
+                    <span>Price: ${product.price}</span>
                     <img src={images.img_url} />
                     <div>
                       <NavLink to={`/products/details/${product.id}`}>

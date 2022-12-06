@@ -10,55 +10,68 @@ const Cart = (props) => {
   const cart = props.cart;
   const [CART, setCART] = useState([]);
   const initialValue = 0;
-  const [totalPrice, setTotalPrice] = useState()
+  const [totalPrice, setTotalPrice] = useState();
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     setCART(cart);
   }, [cart]);
 
-
   const CalculateCartTotal = () => {
     const result = CART.reduce((accumulator, d) => {
-      return accumulator + Number(d.price)
+      return accumulator + Number(d.price);
     }, 0);
-    setTotalPrice(result)
-    }
-
+    setTotalPrice(result);
+  };
 
   return (
     <div className="cartContainer">
-      <div> I am cart </div>
-      <button id="deleteItem"> Remove Item </button>
-
       <div>
         <div id="cartList">
           {CART.length ? (
             CART.map((itemInfo, cartIndex) => {
               return (
                 <>
-                  <img src={itemInfo.img_url} />
+                  <img src={itemInfo.img_url} width="20%" />
                   <div id="singleCart">
-                    <div>{itemInfo.name}</div>
-                    <div>${itemInfo.price}</div>
+                    <p>{itemInfo.name}</p>
+                    <p>${itemInfo.price}</p>
+                    <button
+                      onClick={() => {
+                        const cartQtyFinal = CART.map((item, index) => {
+                          return cartIndex === index ? 
+                            {...item, quantity:item.quantity > 0 ? item.quantity - 1 : 0,} : item;
+                        });
+                        setCART(cartQtyFinal);
+                      }}
+                    >
+                      -
+                    </button>
+                    <span> {itemInfo.quantity} </span>
+                    <button
+                      onClick={() => {
+                        const cartQtyFinal = CART.map((item, index) => {
+                          return cartIndex === index
+                            ? { ...item, quantity: item.quantity + 1 } : item;
+                        });
+                        setCART(cartQtyFinal);
+                      }}
+                    >
+                      +
+                    </button>
                   </div>
                 </>
               );
             })
           ) : (
-            <div>Loading Cart..</div>
+            <div>Nothing in your cart yet!</div>
           )}
         </div>
-        <div>
-          
-          <button onClick={CalculateCartTotal}>
-            
-            Calculate Total Cost
-          </button>
+        <p>
+          <button onClick={CalculateCartTotal}>Calculate Total Cost</button>
           Total Price: {totalPrice}
-        </div>
+        </p>
       </div>
-
-      <div> I am cart </div>
       <button id="deleteItem"> Remove Item </button>
     </div>
   );
