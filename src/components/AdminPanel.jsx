@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { userInfo, userUpdate } from "../apiAdapter";
+import HomeFooter from "./HomeFooter";
 
 const AdminPanel = (props) => {
   const currentUser = props.currentUser;
@@ -99,6 +100,7 @@ const AdminPanel = (props) => {
           <div>Hello</div>
         )}
       </div>
+      <HomeFooter/>
     </div>
   );
 };
