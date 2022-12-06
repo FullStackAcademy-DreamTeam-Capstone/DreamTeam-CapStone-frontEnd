@@ -17,9 +17,10 @@ const Cart = (props) => {
     setCART(cart);
   }, [cart]);
 
+
   const CalculateCartTotal = () => {
     const result = CART.reduce((accumulator, d) => {
-      return accumulator + Number(d.price);
+      return accumulator + Number(d.price) * Number(d.quantity);
     }, 0);
     setTotalPrice(result);
   };
@@ -55,6 +56,8 @@ const Cart = (props) => {
                             ? { ...item, quantity: item.quantity + 1 } : item;
                         });
                         setCART(cartQtyFinal);
+
+
                       }}
                     >
                       +
