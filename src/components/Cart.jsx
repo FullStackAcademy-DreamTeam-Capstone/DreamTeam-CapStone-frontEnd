@@ -38,16 +38,11 @@ const Cart = (props) => {
                     <p>${itemInfo.price}</p>
                     <button
                       onClick={() => {
-                        const _CART = CART.map((item, index) => {
-                          return cartIndex === index
-                            ? {
-                                ...item,
-                                quantity:
-                                  item.quantity > 0 ? item.quantity - 1 : 0,
-                              }
-                            : item;
+                        const cartQtyFinal = CART.map((item, index) => {
+                          return cartIndex === index ? 
+                            {...item, quantity:item.quantity > 0 ? item.quantity - 1 : 0,} : item;
                         });
-                        setCART(_CART);
+                        setCART(cartQtyFinal);
                       }}
                     >
                       -
@@ -55,12 +50,11 @@ const Cart = (props) => {
                     <span> {itemInfo.quantity} </span>
                     <button
                       onClick={() => {
-                        const _CART = CART.map((item, index) => {
+                        const cartQtyFinal = CART.map((item, index) => {
                           return cartIndex === index
-                            ? { ...item, quantity: item.quantity + 1 }
-                            : item;
+                            ? { ...item, quantity: item.quantity + 1 } : item;
                         });
-                        setCART(_CART);
+                        setCART(cartQtyFinal);
                       }}
                     >
                       +
