@@ -15,7 +15,7 @@ const HomeFooter = () => {
 
           <ul className="footerRows">
             <h4>Donate to us</h4>
-            <li> Broke boy funds </li>
+            <li> Future Coders of America Steam Funds </li>
           </ul>
           <ul className="footerRows">
             <h4> Come see our Portfolios!</h4>
