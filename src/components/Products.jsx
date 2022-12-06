@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Navigate, NavLink, useParams } from "react-router-dom";
 import { createCartItem, deleteProduct } from "../apiAdapter";
 // import { EditProduct } from "./";
@@ -39,7 +39,9 @@ const Products = (props) => {
     }
   }
 
+
   console.log("All products: " + props.getProduct);
+
 
   return (
     <div>
@@ -59,6 +61,7 @@ const Products = (props) => {
                       <NavLink to={`/products/details/${product.id}`}>
                         <button id="seeDetails"> See Details </button>
                       </NavLink>
+
                       <button onClick={() => addToCart(product)}>
                         {" "}
                         Add to Cart{" "}

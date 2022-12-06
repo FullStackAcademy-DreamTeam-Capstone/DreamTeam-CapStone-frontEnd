@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { getCart } from "../apiAdapter";
 import Products from "./Products";
@@ -13,15 +12,28 @@ const Cart = (props) => {
   const [totalPrice, setTotalPrice] = useState();
   const [qty, setQty] = useState(1);
 
+  const savedCart = localStorage.getItem("cart");
+  const cartArray = JSON.parse(savedCart);
+  const [localCart, setLocalCart] = useState(cartArray);
+
   useEffect(() => {
     setCART(cart);
   }, [cart]);
 
 
   const CalculateCartTotal = () => {
-    const result = CART.reduce((accumulator, d) => {
-      return accumulator + Number(d.price) * Number(d.quantity);
+
+    const result = localCart.reduce((accumulator, d) => {
+      return accumulator + Number(d.price);
+
     }, 0);
+    setTotalPrice(result);
+  };
+
+  const finalPrice = () => {
+    const result = localCart
+      .map((item) => item.price * item.quantity)
+      .reduce((total, value) => total + value, 0);
     setTotalPrice(result);
   };
 
@@ -29,8 +41,8 @@ const Cart = (props) => {
     <div className="cartContainer">
       <div>
         <div id="cartList">
-          {CART.length ? (
-            CART.map((itemInfo, cartIndex) => {
+          {localCart.length ? (
+            localCart.map((itemInfo, cartIndex) => {
               return (
                 <>
                   <img src={itemInfo.img_url} width="20%" />
@@ -39,11 +51,20 @@ const Cart = (props) => {
                     <p>${itemInfo.price}</p>
                     <button
                       onClick={() => {
-                        const cartQtyFinal = CART.map((item, index) => {
-                          return cartIndex === index ? 
-                            {...item, quantity:item.quantity > 0 ? item.quantity - 1 : 0,} : item;
-                        });
-                        setCART(cartQtyFinal);
+                        const cartQtyFinal = localCart.map(
+                          (cartItem, index) => {
+                            return cartIndex === index
+                              ? {
+                                  ...cartItem,
+                                  quantity:
+                                    cartItem.quantity > 0
+                                      ? cartItem.quantity - 1
+                                      : 0,
+                                }
+                              : cartItem;
+                          }
+                        );
+                        setLocalCart(cartQtyFinal);
                       }}
                     >
                       -
@@ -51,16 +72,21 @@ const Cart = (props) => {
                     <span> {itemInfo.quantity} </span>
                     <button
                       onClick={() => {
-                        const cartQtyFinal = CART.map((item, index) => {
+                        const cartQtyFinal = localCart.map((item, index) => {
                           return cartIndex === index
-                            ? { ...item, quantity: item.quantity + 1 } : item;
+                            ? { ...item, quantity: item.quantity + 1 }
+                            : item;
                         });
-                        setCART(cartQtyFinal);
 
+                        setLocalCart(cartQtyFinal);
 
                       }}
                     >
                       +
+                    </button>
+                    <button id="deleteItem" >
+                      {" "}
+                      Remove Item{" "}
                     </button>
                   </div>
                 </>
@@ -72,10 +98,9 @@ const Cart = (props) => {
         </div>
         <p>
           <button onClick={CalculateCartTotal}>Calculate Total Cost</button>
-          Total Price: {totalPrice}
+          Total Price: {finalPrice}
         </p>
       </div>
-      <button id="deleteItem"> Remove Item </button>
     </div>
   );
 };
