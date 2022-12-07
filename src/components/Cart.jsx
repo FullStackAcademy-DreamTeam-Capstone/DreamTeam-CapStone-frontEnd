@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getCart, deleteCartItem } from "../apiAdapter";
 import Products from "./Products";
 import Profile from "./Profile";
@@ -15,6 +15,8 @@ const Cart = (props) => {
   const savedCart = localStorage.getItem("cart");
   const cartArray = JSON.parse(savedCart);
   const [localCart, setLocalCart] = useState(cartArray);
+  
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCART(cart);
@@ -25,7 +27,11 @@ const Cart = (props) => {
     const result = localCart.reduce((accumulator, d) => {
       return accumulator + Number(d.price) * Number(d.quantity);
     }, 0);
+
+    console.log(localCart, 'hello')
+
     console.log(result, "hello");
+
     setTotalPrice(result);
   };
 
@@ -40,6 +46,14 @@ const Cart = (props) => {
   async function handleDeleteCartItem(event) {
     const deletedCartItem = await deleteCartItem(event.target.id);
   }
+
+//BUY BUTTON FUNCTION
+const handleSubmitBuyButton = () => {
+  localStorage.removeItem('cart')
+  navigate("/")
+  window.location.reload()
+  alert('thank you for purchasing with us')
+}
 
   return (
     <div className="cartContainer">
@@ -108,6 +122,9 @@ const Cart = (props) => {
           <button onClick={CalculateCartTotal}>Calculate Total Cost</button>
           Total Price: {totalPrice}
         </p>
+      </div>
+      <div>
+        <button onClick={handleSubmitBuyButton}> BUY NOW </button>
       </div>
     </div>
   );

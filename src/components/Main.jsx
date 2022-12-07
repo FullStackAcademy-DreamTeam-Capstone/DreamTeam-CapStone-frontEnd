@@ -87,7 +87,7 @@ useEffect(() => {
     const storedItems = JSON.parse(localStorage.getItem('cart'));
     if (storedItems){ 
       setLocalCart(storedItems)
-    };
+    }
   }, []);
 
   useEffect(() => {
