@@ -230,8 +230,26 @@ export async function createCartItem(price, quantity){
     const response = await fetch(`${BASE_URL}/api/cart_items`, options);
     const result = await response.json();
     return result;
-    console.log(result, 'line203 api')
   } catch (error) {
     console.log(error)
   }
 }
+
+//delete cart item
+export async function deleteCartItem(id){
+  try {
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+
+    const response = await fetch(`${BASE_URL}/api/cart_items/${id}`, options);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.log(error)
+  }
+} 
