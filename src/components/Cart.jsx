@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { getCart } from "../apiAdapter";
+import { getCart, deleteCartItem } from "../apiAdapter";
 import Products from "./Products";
 import Profile from "./Profile";
 
@@ -20,22 +20,29 @@ const Cart = (props) => {
     setCART(cart);
   }, [cart]);
 
-
+//PRICE TOTAL FUNCTION
   const CalculateCartTotal = () => {
 
     const result = localCart.reduce((accumulator, d) => {
-      return accumulator + Number(d.price);
+      return accumulator + Number(d.price) * Number(d.quantity);
 
     }, 0);
+    console.log(result, 'hello')
     setTotalPrice(result);
   };
 
   const finalPrice = () => {
     const result = localCart
       .map((item) => item.price * item.quantity)
-      .reduce((total, value) => total + value, 0);
+      .reduce((total, value) => total + value, 1);
     setTotalPrice(result);
   };
+
+//DELETE CART ITEM FUNCTION
+async function handleDeleteCartItem(event) {
+  const deletedCartItem = await deleteCartItem(event.target.id);
+}
+
 
   return (
     <div className="cartContainer">
@@ -74,7 +81,10 @@ const Cart = (props) => {
                       onClick={() => {
                         const cartQtyFinal = localCart.map((item, index) => {
                           return cartIndex === index
-                            ? { ...item, quantity: item.quantity + 1 }
+                            ? { ...item, quantity:
+                              item.quantity
+                                ? item.quantity + 1
+                                : 1, }
                             : item;
                         });
 
@@ -84,9 +94,9 @@ const Cart = (props) => {
                     >
                       +
                     </button>
-                    <button id="deleteItem" >
-                      {" "}
-                      Remove Item{" "}
+                    <button onClick={handleDeleteCartItem} id={itemInfo.id} >
+          
+                      Remove Item
                     </button>
                   </div>
                 </>
@@ -98,7 +108,7 @@ const Cart = (props) => {
         </div>
         <p>
           <button onClick={CalculateCartTotal}>Calculate Total Cost</button>
-          Total Price: {finalPrice}
+          Total Price: {totalPrice}
         </p>
       </div>
     </div>
