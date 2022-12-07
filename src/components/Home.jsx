@@ -17,7 +17,7 @@ const Home = () => {
     <div id="Home">
       <div id="HomeContainer">
         <div id="homeHeader">
-          Shop for any occasion with Amazon Lite (name still pending)
+          Shop for any occasion with <h2>Amazon Lite</h2>
         </div>
 
         <div id="homeImage">
