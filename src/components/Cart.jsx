@@ -15,7 +15,7 @@ const Cart = (props) => {
   const savedCart = localStorage.getItem("cart");
   const cartArray = JSON.parse(savedCart);
   const [localCart, setLocalCart] = useState(cartArray);
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -124,7 +124,7 @@ const handleSubmitBuyButton = () => {
         </p>
       </div>
       <div>
-        <button onClick={handleSubmitBuyButton}> BUY NOW </button>
+        <button id="buyNowButton" onClick={handleSubmitBuyButton}> BUY NOW </button>
       </div>
     </div>
   );
