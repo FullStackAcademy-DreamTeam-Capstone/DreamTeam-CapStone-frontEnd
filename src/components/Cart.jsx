@@ -20,14 +20,12 @@ const Cart = (props) => {
     setCART(cart);
   }, [cart]);
 
-//PRICE TOTAL FUNCTION
+  //PRICE TOTAL FUNCTION
   const CalculateCartTotal = () => {
-
     const result = localCart.reduce((accumulator, d) => {
       return accumulator + Number(d.price) * Number(d.quantity);
-
     }, 0);
-    console.log(result, 'hello')
+    console.log(result, "hello");
     setTotalPrice(result);
   };
 
@@ -38,22 +36,24 @@ const Cart = (props) => {
     setTotalPrice(result);
   };
 
-//DELETE CART ITEM FUNCTION
-async function handleDeleteCartItem(event) {
-  const deletedCartItem = await deleteCartItem(event.target.id);
-}
-
+  //DELETE CART ITEM FUNCTION
+  async function handleDeleteCartItem(event) {
+    const deletedCartItem = await deleteCartItem(event.target.id);
+  }
 
   return (
     <div className="cartContainer">
+      <div id="cartHeader">
+        <h1>Your Cart</h1>
+      </div>
       <div>
         <div id="cartList">
           {localCart.length ? (
             localCart.map((itemInfo, cartIndex) => {
               return (
                 <>
-                  <img src={itemInfo.img_url} width="20%" />
                   <div id="singleCart">
+                    <img id='image-box' src={itemInfo.img_url} width="70%"/>
                     <p>{itemInfo.name}</p>
                     <p>${itemInfo.price}</p>
                     <button
@@ -81,21 +81,19 @@ async function handleDeleteCartItem(event) {
                       onClick={() => {
                         const cartQtyFinal = localCart.map((item, index) => {
                           return cartIndex === index
-                            ? { ...item, quantity:
-                              item.quantity
-                                ? item.quantity + 1
-                                : 1, }
+                            ? {
+                                ...item,
+                                quantity: item.quantity ? item.quantity + 1 : 1,
+                              }
                             : item;
                         });
 
                         setLocalCart(cartQtyFinal);
-
                       }}
                     >
                       +
                     </button>
-                    <button onClick={handleDeleteCartItem} id={itemInfo.id} >
-          
+                    <button onClick={handleDeleteCartItem} id={itemInfo.id}>
                       Remove Item
                     </button>
                   </div>
