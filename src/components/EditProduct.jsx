@@ -25,21 +25,21 @@ return (
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <label className="productLabel"> Product Price</label>
+        <label className="productLabel"> Product Price: </label>
         <input
           type="text"
           required
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         ></input>
-        <label htmlFor="imgUrl"> Product Image </label>
+        <label htmlFor="imgUrl"> Product Image: </label>
         <input
           type="text"
           name="img"
           value={imgUrl} 
           onChange={(e) => setImgUrl(e.target.value)}
         />
-        <button>Edit Product</button>
+        <button>Edit Product </button>
         </form>
     </div>
 )
