@@ -342,6 +342,10 @@ align-items: center;
   color: #2C3639;
 }
 
+#singleCart span {
+  color: #2C3639;
+}
+
 #image-box {
   margin-bottom: 10px;
 }
