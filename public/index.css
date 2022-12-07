@@ -266,3 +266,37 @@ align-items: center;
   max-width: 500px;
   max-height: 270px;
 }
+
+/* See Details Styling*/
+
+#details {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #DCD7C9;
+  color: #DCD7C9;
+  height: 80vh;
+}
+
+#borders {
+  box-shadow: 0px 0px 12px black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 1107px;
+  background-color: #3F4E4F;
+}
+
+#borders img {
+  width: 500px;
+  height: 300px;
+}
+
+.Price {
+  padding-top: 30px;
+  font-size: large;
+}
+
+.edit {
+  padding-top: 40px;
+}

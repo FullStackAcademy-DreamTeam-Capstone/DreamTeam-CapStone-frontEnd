@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { deleteProduct } from "../apiAdapter";
-import { EditProduct } from "./";
+import { EditProduct, HomeFooter } from "./";
 
 const SeeDetails = (props) => {
   const [filterProduct, setFilterProduct] = useState({});
@@ -24,14 +24,20 @@ const SeeDetails = (props) => {
 
   return (
     <div>
-      {currentUser ? (
-        <>
-          <h2>Product Name: {filterProduct.name}</h2>
-          <div>Product Price: {filterProduct.price}</div>
-          <img src={filterProduct.img_url} alt="" />
-          {currentUser.isadmin ? <EditProduct /> : null}
-        </>
-      ) : null}
+      <div id="details">
+        {currentUser ? (
+          <div id="borders">
+            <h2>Product Name: {filterProduct.name}</h2>
+            <img src={filterProduct.img_url} alt="" />
+            <div className="Price">Product Price: {filterProduct.price}</div>
+            <div className="edit">
+              {currentUser.isadmin ? <EditProduct /> : null}
+            </div>
+              <h3><NavLink to="/products">Go Back to Products</NavLink></h3>
+          </div>
+        ) : null}
+      </div>
+      <HomeFooter />
     </div>
   );
 };
