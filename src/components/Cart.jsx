@@ -27,11 +27,6 @@ const Cart = (props) => {
     const result = localCart.reduce((accumulator, d) => {
       return accumulator + Number(d.price) * Number(d.quantity);
     }, 0);
-
-    console.log(localCart, 'hello')
-
-    console.log(result, "hello");
-
     setTotalPrice(result);
   };
 
@@ -44,16 +39,30 @@ const Cart = (props) => {
 
   //DELETE CART ITEM FUNCTION
   async function handleDeleteCartItem(event) {
-    const deletedCartItem = await deleteCartItem(event.target.id);
+    const cartLocal = JSON.parse(localStorage.getItem("cart"));
+    const filteredCartLocal = cartLocal.filter((cartItem) => {
+      console.log(cartItem, event.target.id, 'line49')
+      if (cartItem.id != event.target.id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    localStorage.removeItem('cart')
+    localStorage.setItem('cart', JSON.stringify(filteredCartLocal))
+    window.location.reload();
+
+    alert("This item has been deleted off your local cart.");
+
   }
 
-//BUY BUTTON FUNCTION
-const handleSubmitBuyButton = () => {
-  localStorage.removeItem('cart')
-  navigate("/")
-  window.location.reload()
-  alert('thank you for purchasing with us')
-}
+  //BUY BUTTON FUNCTION
+  const handleSubmitBuyButton = () => {
+    localStorage.removeItem("cart");
+    navigate("/");
+    window.location.reload();
+    alert("Thank you for purchasing with us!");
+  };
 
   return (
     <div className="cartContainer">
@@ -67,7 +76,7 @@ const handleSubmitBuyButton = () => {
               return (
                 <>
                   <div id="singleCart">
-                    <img id='image-box' src={itemInfo.img_url} width="70%"/>
+                    <img id="image-box" src={itemInfo.img_url} width="70%" />
                     <p>{itemInfo.name}</p>
                     <p>${itemInfo.price}</p>
                     <button
@@ -124,7 +133,10 @@ const handleSubmitBuyButton = () => {
         </p>
       </div>
       <div>
-        <button id="buyNowButton" onClick={handleSubmitBuyButton}> BUY NOW </button>
+        <button id="buyNowButton" onClick={handleSubmitBuyButton}>
+          {" "}
+          BUY NOW{" "}
+        </button>
       </div>
     </div>
   );
